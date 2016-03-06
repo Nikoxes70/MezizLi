@@ -8,20 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		758F3B1E1C8C2F0E005D1EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B1D1C8C2F0E005D1EF5 /* AppDelegate.swift */; };
-		758F3B201C8C2F0E005D1EF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B1F1C8C2F0E005D1EF5 /* ViewController.swift */; };
 		758F3B231C8C2F0E005D1EF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758F3B211C8C2F0E005D1EF5 /* Main.storyboard */; };
 		758F3B251C8C2F0E005D1EF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 758F3B241C8C2F0E005D1EF5 /* Assets.xcassets */; };
 		758F3B281C8C2F0E005D1EF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758F3B261C8C2F0E005D1EF5 /* LaunchScreen.storyboard */; };
+		758F3B3E1C8C3100005D1EF5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B3D1C8C3100005D1EF5 /* Client.swift */; };
+		758F3B421C8C3199005D1EF5 /* DBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B411C8C3199005D1EF5 /* DBClient.swift */; };
+		758F3B441C8C3216005D1EF5 /* MazizLIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B431C8C3216005D1EF5 /* MazizLIVC.swift */; };
+		758F3B461C8C3241005D1EF5 /* MazizLaamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B451C8C3241005D1EF5 /* MazizLaamVC.swift */; };
+		758F3B481C8C327C005D1EF5 /* AddProdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B471C8C327C005D1EF5 /* AddProdVC.swift */; };
+		758F3B4A1C8C3366005D1EF5 /* UPCImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B491C8C3366005D1EF5 /* UPCImageVC.swift */; };
+		758F3B4C1C8C34F4005D1EF5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B4B1C8C34F4005D1EF5 /* Product.swift */; };
+		758F3B4E1C8C360E005D1EF5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 758F3B4D1C8C360E005D1EF5 /* Info.plist */; };
+		758F3B701C8C3C99005D1EF5 /* MazizLaamInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B6F1C8C3C99005D1EF5 /* MazizLaamInfoVC.swift */; };
+		758F3B721C8C3EB2005D1EF5 /* UploadProduct2DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B711C8C3EB2005D1EF5 /* UploadProduct2DB.swift */; };
+		758F3B741C8C55D2005D1EF5 /* asynctask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B731C8C55D2005D1EF5 /* asynctask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		758F3B1A1C8C2F0E005D1EF5 /* MezizLi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezizLi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		758F3B1D1C8C2F0E005D1EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		758F3B1F1C8C2F0E005D1EF5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		758F3B221C8C2F0E005D1EF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		758F3B241C8C2F0E005D1EF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		758F3B271C8C2F0E005D1EF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		758F3B291C8C2F0E005D1EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		758F3B3D1C8C3100005D1EF5 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		758F3B411C8C3199005D1EF5 /* DBClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBClient.swift; sourceTree = "<group>"; };
+		758F3B431C8C3216005D1EF5 /* MazizLIVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazizLIVC.swift; sourceTree = "<group>"; };
+		758F3B451C8C3241005D1EF5 /* MazizLaamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazizLaamVC.swift; sourceTree = "<group>"; };
+		758F3B471C8C327C005D1EF5 /* AddProdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProdVC.swift; sourceTree = "<group>"; };
+		758F3B491C8C3366005D1EF5 /* UPCImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCImageVC.swift; sourceTree = "<group>"; };
+		758F3B4B1C8C34F4005D1EF5 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		758F3B4D1C8C360E005D1EF5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		758F3B6F1C8C3C99005D1EF5 /* MazizLaamInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazizLaamInfoVC.swift; sourceTree = "<group>"; };
+		758F3B711C8C3EB2005D1EF5 /* UploadProduct2DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadProduct2DB.swift; sourceTree = "<group>"; };
+		758F3B731C8C55D2005D1EF5 /* asynctask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = asynctask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +74,38 @@
 			isa = PBXGroup;
 			children = (
 				758F3B1D1C8C2F0E005D1EF5 /* AppDelegate.swift */,
-				758F3B1F1C8C2F0E005D1EF5 /* ViewController.swift */,
+				758F3B401C8C3114005D1EF5 /* CommonUtils */,
+				758F3B3F1C8C3108005D1EF5 /* VC */,
 				758F3B211C8C2F0E005D1EF5 /* Main.storyboard */,
 				758F3B241C8C2F0E005D1EF5 /* Assets.xcassets */,
 				758F3B261C8C2F0E005D1EF5 /* LaunchScreen.storyboard */,
-				758F3B291C8C2F0E005D1EF5 /* Info.plist */,
+				758F3B4D1C8C360E005D1EF5 /* Info.plist */,
 			);
 			path = MezizLi;
+			sourceTree = "<group>";
+		};
+		758F3B3F1C8C3108005D1EF5 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				758F3B451C8C3241005D1EF5 /* MazizLaamVC.swift */,
+				758F3B6F1C8C3C99005D1EF5 /* MazizLaamInfoVC.swift */,
+				758F3B431C8C3216005D1EF5 /* MazizLIVC.swift */,
+				758F3B471C8C327C005D1EF5 /* AddProdVC.swift */,
+				758F3B491C8C3366005D1EF5 /* UPCImageVC.swift */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		758F3B401C8C3114005D1EF5 /* CommonUtils */ = {
+			isa = PBXGroup;
+			children = (
+				758F3B731C8C55D2005D1EF5 /* asynctask.swift */,
+				758F3B711C8C3EB2005D1EF5 /* UploadProduct2DB.swift */,
+				758F3B411C8C3199005D1EF5 /* DBClient.swift */,
+				758F3B3D1C8C3100005D1EF5 /* Client.swift */,
+				758F3B4B1C8C34F4005D1EF5 /* Product.swift */,
+			);
+			name = CommonUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,7 +140,6 @@
 				TargetAttributes = {
 					758F3B191C8C2F0E005D1EF5 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = L29R73X57A;
 					};
 				};
 			};
@@ -123,6 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				758F3B4E1C8C360E005D1EF5 /* Info.plist in Resources */,
 				758F3B281C8C2F0E005D1EF5 /* LaunchScreen.storyboard in Resources */,
 				758F3B251C8C2F0E005D1EF5 /* Assets.xcassets in Resources */,
 				758F3B231C8C2F0E005D1EF5 /* Main.storyboard in Resources */,
@@ -136,7 +180,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				758F3B201C8C2F0E005D1EF5 /* ViewController.swift in Sources */,
+				758F3B701C8C3C99005D1EF5 /* MazizLaamInfoVC.swift in Sources */,
+				758F3B3E1C8C3100005D1EF5 /* Client.swift in Sources */,
+				758F3B4C1C8C34F4005D1EF5 /* Product.swift in Sources */,
+				758F3B741C8C55D2005D1EF5 /* asynctask.swift in Sources */,
+				758F3B461C8C3241005D1EF5 /* MazizLaamVC.swift in Sources */,
+				758F3B441C8C3216005D1EF5 /* MazizLIVC.swift in Sources */,
+				758F3B721C8C3EB2005D1EF5 /* UploadProduct2DB.swift in Sources */,
+				758F3B481C8C327C005D1EF5 /* AddProdVC.swift in Sources */,
+				758F3B421C8C3199005D1EF5 /* DBClient.swift in Sources */,
+				758F3B4A1C8C3366005D1EF5 /* UPCImageVC.swift in Sources */,
 				758F3B1E1C8C2F0E005D1EF5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,10 +301,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MezizLi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikoxes.MezizLi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -259,10 +315,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MezizLi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikoxes.MezizLi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
