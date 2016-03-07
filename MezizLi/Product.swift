@@ -20,7 +20,7 @@ class  Product {
     var user:String;
     var img:UIImage?;
     
-    init(itemName:String,itemDescription:String,itemCategory:String,itemVoteUp:Int,itemVoteDown:Int,date:Double,UPC:String?,user:String,img:UIImage?){
+    init(itemName:String,itemDescription:String,itemCategory:String,itemVoteUp:Int,itemVoteDown:Int,currentDate:Double?,UPC:String?,user:String,img:UIImage?){
         
         self.name = itemName;
         self.description = itemDescription;
@@ -32,11 +32,11 @@ class  Product {
         }
         self.voteUp=itemVoteUp;
         self.voteDown=itemVoteDown;
-        self.date = NSDate().timeIntervalSince1970;
+        self.date = currentDate!;
         self.UPC = UPC != nil ? UPC! : "";
         self.user = user;
     }
-
+    
 }
 
 

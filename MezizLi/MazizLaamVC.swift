@@ -89,7 +89,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                     }
                 }
                 
-                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, date: date, UPC: UPC, user: user, img: image))
+                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image))
                 
                 }, afterTask: {()in
                     

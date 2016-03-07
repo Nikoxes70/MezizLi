@@ -2,15 +2,15 @@ import AVFoundation
 import UIKit
 
 class UPCImageVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-    @IBOutlet weak var backBTN: UIButton!
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var upc:String?
+    @IBOutlet weak var btnBack: UIButton!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        backBTN.layer.zPosition = 300
-        view.backgroundColor = UIColor.blackColor()
+        btnBack.layer.zPosition = 2;
         captureSession = AVCaptureSession()
         
         let videoCaptureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
@@ -89,7 +89,7 @@ class UPCImageVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     func foundCode(code: String) {
         print(code)
-       //AddProdViewController.;
+        //AddProdViewController.;
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -99,4 +99,5 @@ class UPCImageVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return .Portrait
     }
+    
 }

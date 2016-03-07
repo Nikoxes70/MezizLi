@@ -96,6 +96,7 @@
 		758F3B3F1C8C3108005D1EF5 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				6C11A06E1C8DCFAE008FDF0B /* ProductCTBC.swift */,
 				758F3B771C8D71A3005D1EF5 /* RegisterVC.swift */,
 				758F3B451C8C3241005D1EF5 /* MazizLaamVC.swift */,
 				758F3B6F1C8C3C99005D1EF5 /* MazizLaamInfoVC.swift */,
