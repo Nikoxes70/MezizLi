@@ -74,7 +74,8 @@ class RegisterVC: UIViewController {
         
         print(Client().addUser(txtFirstRegVC.text!, lastName: txtLastRegVC.text!, email: txtEmailRegVC.text!, phoneNumber: txtPhoneRegVC.text!));
         
-        //isOk = true
+        isOk = true
+        performSegueWithIdentifier("login", sender: self)
     }
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "login"{

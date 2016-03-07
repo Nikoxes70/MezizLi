@@ -17,12 +17,13 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
     @IBAction func createProdcut(sender: UIButton) {
     }
     @IBOutlet weak var prodName: UITextField!
-    @IBOutlet var desricption: UITextView!
+    @IBOutlet var desricption: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var imgView: UIImageView!
     var imgPath:String="";
     @IBOutlet weak var labelUPC: UILabel!
     var getUPC:String?;
+    var webimage:String?
     
     
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
         pickerView.delegate=self;
     }
     func viewDidAppear() {
-    
+        
     }
     
     
@@ -55,14 +56,23 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
     }
     
     private func UPCsetter(upc:String){
-        labelUPC.text="fff\(upc)";
+        labelUPC.text="ברקוד:  \(upc)";
+        getUPC=upc;
+        let url = NSURL(string: "http://m.pricez.co.il/ProductPictures/200x/\(upc).jpg")
+        if let data = NSData(contentsOfURL: url!){
+            imgView.image = UIImage(data: data)
+        }
         print(upc);
+        
         
     }
     
     @IBAction func picImg(sender: UIButton) {
         imgPicker.sourceType = .Camera;
         showViewController(imgPicker, sender: self);
+    }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true);
     }
     func imagePickerController(picker: UIImagePickerController,  didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         // let imagename:String="Mazizli_\(round(NSDate().timeIntervalSince1970))";
@@ -75,7 +85,7 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
                     NSLog("Finished updating asset. %@", (success ? "Success." : error!))
             })
             
-            self.imgView.contentMode = .ScaleToFill;
+            self.imgView.contentMode = .ScaleAspectFit;
             self.imgView.image=image;
         })
         
@@ -90,13 +100,15 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
             }
         }
     }
+    
     @IBAction func createAndSendProd(sender: AnyObject) {
+        let myUPC=getUPC;
+        let timeStemp=NSDate().timeIntervalSince1970;
+        let mProdcut=Product(itemName: prodName.text!, itemDescription: desricption.text!, itemCategory: myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: "", img: imgView.image)
+        UploadProduct2DB().addProduct(mProdcut);
         
-        //let product = Products(itemName: prodName.text!, itemDescription: desricption.text, itemCategory: myCategory)
-//        product.img=imgView.image;
-//        product.UPC = self.getUPC!
-//        product.user="";
+        // print(mProdcut);
         
     }
-
+    
 }

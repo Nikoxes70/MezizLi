@@ -14,7 +14,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     var name:String = "";
     override func viewDidAppear(animated: Bool) {
-        UDefaults.removeObjectForKey("LoggedUser")
+        //UDefaults.removeObjectForKey("LoggedUser")
         if let s = UDefaults.objectForKey("LoggedUser"){
             print("wellcome \(s)")
         }else{
@@ -89,7 +89,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                     }
                 }
                 
-                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, date: date, UPC: UPC, user: user, img: image))
+                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image))
                 
                 }, afterTask: {()in
                     
