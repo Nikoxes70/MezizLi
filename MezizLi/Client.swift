@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 class Client{
     
-    func addUser(firstName:String, lastName:String, email:String, password:String, phoneNumber:Int, prob1:String, prob2:String, prob3:String){
+    func addUser(firstName:String, lastName:String, email:String, phoneNumber:String){
         
-        print("\(firstName),\(lastName),\(email),\(password),\(phoneNumber),\(prob1),\(prob2),\(prob3)");
+        print("\(firstName),\(lastName),\(email),\(phoneNumber)");
         
         let request = NSMutableURLRequest(URL: NSURL(string:"http://www.itzikne.5gbfree.com/DBUsers/postDataPhp.php")!);
         
         request.HTTPMethod = "POST";
         
-        request.HTTPBody = "firstName=\(firstName)&lastName=\(lastName)&email=\(email)&password=\(password)&phoneNumber=\(phoneNumber)&prob1=\(prob1)&prob2=\(prob2)&prob3=\(prob3)".dataUsingEncoding(NSUTF8StringEncoding);
+        request.HTTPBody = "firstName=\(firstName)&lastName=\(lastName)&email=\(email)&phoneNumber=\(phoneNumber)".dataUsingEncoding(NSUTF8StringEncoding);
         
         NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(d,r,e)in
             if e == nil{

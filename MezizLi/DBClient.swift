@@ -11,5 +11,6 @@ import UIKit
 class DBClient{
     
     static var products:[Product] = []
+    static var myProducts:[Product] = []
     
 }

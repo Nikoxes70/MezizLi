@@ -2,13 +2,14 @@ import AVFoundation
 import UIKit
 
 class UPCImageVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    @IBOutlet weak var backBTN: UIButton!
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var upc:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        backBTN.layer.zPosition = 300
         view.backgroundColor = UIColor.blackColor()
         captureSession = AVCaptureSession()
         

@@ -9,12 +9,20 @@
 import UIKit
 
 class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    
+    let UDefaults = NSUserDefaults.standardUserDefaults();
     
     @IBOutlet weak var tableView: UITableView!
     var name:String = "";
-    
+    override func viewDidAppear(animated: Bool) {
+        UDefaults.removeObjectForKey("LoggedUser")
+        if let s = UDefaults.objectForKey("LoggedUser"){
+            print("wellcome \(s)")
+        }else{
+            performSegueWithIdentifier("register", sender: self)
+        }
+    }
     override func viewDidLoad() {
+       
         
         
         DBClient.products.removeAll();
@@ -45,7 +53,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     
     //read from the server
-    private func readJSON(d:NSData)//->[Product]
+    private func readJSON(d:NSData)
     {
         
         
