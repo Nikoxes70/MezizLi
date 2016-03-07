@@ -24,7 +24,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vfe-ON-giK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3193" y="-1718"/>
+            <point key="canvasLocation" x="-3983" y="-4498"/>
         </scene>
         <!--מזיז לי-->
         <scene sceneID="jF3-on-wfs">
@@ -64,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dl5-oU-5iI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2488" y="-1171"/>
+            <point key="canvasLocation" x="-3278" y="-3871"/>
         </scene>
         <!--מזיז לעם-->
         <scene sceneID="r3f-Oy-Tdd">
@@ -109,11 +109,12 @@
                     <tabBarItem key="tabBarItem" title="מזיז לעם" image="group" id="oWx-Qh-f02"/>
                     <connections>
                         <outlet property="tableView" destination="DS9-Ys-iDk" id="Ii7-Mr-Pan"/>
+                        <segue destination="rkx-db-5KH" kind="show" identifier="register" id="l0t-lK-23U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRS-tZ-y24" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2494" y="-1872"/>
+            <point key="canvasLocation" x="-3284" y="-4572"/>
         </scene>
         <!--Add ProdVC-->
         <scene sceneID="boI-Cy-m2c">
@@ -211,11 +212,6 @@
                                 <variation key="heightClass=regular" misplaced="YES">
                                     <rect key="frame" x="92" y="20" width="36" height="30"/>
                                 </variation>
-                                <connections>
-                                    <segue destination="ivL-Xy-2eB" kind="show" id="4cn-7v-Jw4">
-                                        <nil key="action"/>
-                                    </segue>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -275,40 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NlK-vV-me3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1823" y="-1164"/>
-        </scene>
-        <!--ImageVC-->
-        <scene sceneID="CmR-iy-DiR">
-            <objects>
-                <viewController id="ivL-Xy-2eB" customClass="UPCImageVC" customModule="MezizLi" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d4r-7N-TCZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="4Ja-MD-Mil"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="biE-EA-OxL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toZ-pC-ZM1">
-                                <rect key="frame" x="23" y="20" width="40" height="30"/>
-                                <state key="normal" title="BACK"/>
-                                <connections>
-                                    <segue destination="CkD-7O-uJf" kind="unwind" identifier="unwindToAdd" unwindAction="unwindToAdd:" id="Kn4-Oi-8gf"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="toZ-pC-ZM1" firstAttribute="leading" secondItem="biE-EA-OxL" secondAttribute="leadingMargin" id="dwd-KG-39U"/>
-                            <constraint firstItem="toZ-pC-ZM1" firstAttribute="top" secondItem="d4r-7N-TCZ" secondAttribute="bottom" id="hlO-e6-sUs"/>
-                            <constraint firstItem="toZ-pC-ZM1" firstAttribute="leading" secondItem="biE-EA-OxL" secondAttribute="leadingMargin" constant="3" id="wPN-nQ-93I"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FpL-S3-tHO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="CkD-7O-uJf" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="-1145" y="-1164"/>
+            <point key="canvasLocation" x="-2613" y="-3864"/>
         </scene>
         <!--Maziz Laam InfoVC-->
         <scene sceneID="0Fx-m9-NAl">
@@ -371,7 +334,7 @@
                                 <rect key="frame" x="20" y="20" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="WS9-yk-E4O" kind="unwind" unwindAction="backToMaziz:" id="uCb-im-1tI"/>
+                                    <segue destination="WS9-yk-E4O" kind="unwind" identifier="backToMaziz" unwindAction="backToMaziz:" id="uCb-im-1tI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -409,7 +372,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yl3-7c-fx0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="WS9-yk-E4O" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1842" y="-1872"/>
+            <point key="canvasLocation" x="-2632" y="-4572"/>
+        </scene>
+        <!--RegisterVC-->
+        <scene sceneID="GxM-XX-3Ed">
+            <objects>
+                <viewController id="rkx-db-5KH" customClass="RegisterVC" customModule="MezizLi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XTx-AK-E78"/>
+                        <viewControllerLayoutGuide type="bottom" id="tqd-cJ-GjP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GGG-xm-PVK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U5l-4g-S4r">
+                                <rect key="frame" x="243" y="205" width="116" height="190"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CPS-ci-eHU">
+                                        <rect key="frame" x="0.0" y="0.0" width="116" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4s1-cP-fSF">
+                                        <rect key="frame" x="0.0" y="40" width="116" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Xm-Td-prM">
+                                        <rect key="frame" x="0.0" y="80" width="116" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SEb-Nc-mWc">
+                                        <rect key="frame" x="0.0" y="120" width="116" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwn-PX-cnD">
+                                        <rect key="frame" x="0.0" y="160" width="116" height="30"/>
+                                        <state key="normal" title="הרשם"/>
+                                        <connections>
+                                            <action selector="registration:" destination="rkx-db-5KH" eventType="touchUpInside" id="V84-6l-lC8"/>
+                                            <segue destination="sAO-Qv-6Df" kind="unwind" identifier="login" unwindAction="backToMaziz:" id="vwo-k9-OtI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ERROR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeT-Vs-bmX">
+                                <rect key="frame" x="272" y="473" width="55" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MeT-Vs-bmX" firstAttribute="top" secondItem="U5l-4g-S4r" secondAttribute="bottom" constant="38" id="73c-ki-1ve"/>
+                            <constraint firstItem="U5l-4g-S4r" firstAttribute="centerY" secondItem="GGG-xm-PVK" secondAttribute="centerY" id="9R6-Zw-GOc"/>
+                            <constraint firstItem="U5l-4g-S4r" firstAttribute="centerX" secondItem="GGG-xm-PVK" secondAttribute="centerX" id="Ogt-4Y-1bt"/>
+                            <constraint firstItem="MeT-Vs-bmX" firstAttribute="centerX" secondItem="GGG-xm-PVK" secondAttribute="centerX" id="db3-e9-Qww"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ERROR" destination="MeT-Vs-bmX" id="fm5-Ea-PCG"/>
+                        <outlet property="txtEmailRegVC" destination="CPS-ci-eHU" id="Ai5-iq-Q99"/>
+                        <outlet property="txtFirstRegVC" destination="4s1-cP-fSF" id="ItM-hi-UYf"/>
+                        <outlet property="txtLastRegVC" destination="1Xm-Td-prM" id="bqK-pR-Ih7"/>
+                        <outlet property="txtPhoneRegVC" destination="SEb-Nc-mWc" id="8qd-J0-kEQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VCK-Ti-NV3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="sAO-Qv-6Df" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-4022" y="-3753"/>
         </scene>
     </scenes>
     <resources>

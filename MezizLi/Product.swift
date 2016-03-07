@@ -30,8 +30,8 @@ class  Product {
         }else{
             self.img!.valueForKey("default_product_img.jpg");
         }
-        self.voteUp=0;
-        self.voteDown=0;
+        self.voteUp = itemVoteUp;
+        self.voteDown = itemVoteDown;
         self.date = NSDate().timeIntervalSince1970;
         self.UPC = UPC != nil ? UPC! : "";
         self.user = user;

@@ -9,12 +9,20 @@
 import UIKit
 
 class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    
+    let UDefaults = NSUserDefaults.standardUserDefaults();
     
     @IBOutlet weak var tableView: UITableView!
     var name:String = "";
-    
+    override func viewDidAppear(animated: Bool) {
+        UDefaults.removeObjectForKey("LoggedUser")
+        if let s = UDefaults.objectForKey("LoggedUser"){
+            print("wellcome \(s)")
+        }else{
+            performSegueWithIdentifier("register", sender: self)
+        }
+    }
     override func viewDidLoad() {
+       
         
         DBClient.products.removeAll();
         //DBClient.pics.removeAll();
@@ -59,9 +67,9 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     
     //read from the server
-    private func readJSON(d:NSData)//->[Product]
+    private func readJSON(d:NSData)
     {
-        var image : UIImage?
+        
         
         var json:[[String:AnyObject]];
         do{
@@ -75,34 +83,33 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
      
         for i in json
         {
-            let category = (i["category"]! as! String);
-            let name = (i["name"]! as! String);
-            let description = (i["description"]! as! String);
-            let voteUp = (i["voteUp"]! as! String);
-            let voteDown = (i["voteDown"]! as! String);
-            let img = (i["img"]! as! String);
-            let date = 0.0
-            let user = ""
-            let UPC = ""
-            
-            
-            if let url = NSURL(string: img){
-                if let data = NSData(contentsOfURL: url){
-                    image = UIImage(data: data)!
+            AsyncTask(backgroundTask: {(i)in
+                
+                var image : UIImage?
+                let category = (i["category"]! as! String);
+                let name = (i["name"]! as! String);
+                let description = (i["description"]! as! String);
+                let voteUp = (i["voteUp"]! as! String);
+                let voteDown = (i["voteDown"]! as! String);
+                let img = (i["img"]! as! String);
+                let date = 0.0
+                let user = ""
+                let UPC = ""
+      
+                if let url = NSURL(string: img){
+                    if let data = NSData(contentsOfURL: url){
+                        image = UIImage(data: data)!
+                    }
                 }
-            }
-            
-            
-            //DBClient.pics.append(UIImage(data: data!)!)
-            
-            //DBClient.products.append(["name": "\(name)", "description": "\(description)","voteUp":"\(voteUp)", "voteDown": "\(voteDown)", "category": "\(category)"])
-            
-            DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, date: date, UPC: UPC, user: user, img: image))
-            
+                //print(voteDown)
+                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, date: date, UPC: UPC, user: user, img: image))
+                
+                }, afterTask: {()in
+                    
+                self.tableView.reloadData()
+                    
+            }).execute(i)
         }
-        self.tableView.reloadData()
-       // MazizLaamVC().reload()
-        //return DBClient.products
     }
     
  
