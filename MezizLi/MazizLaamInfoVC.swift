@@ -32,15 +32,6 @@ class MazizLaamInfoVC: UIViewController {
         voteDown.text = "\(VoteDown)";
         productDescriptionText.text=Description;
         productImg.image=pic;
-        
-        
-    }
-    
-    @IBAction func voteUp(sender: UIButton) {
-        
-    }
-    
-    @IBAction func voteDown(sender: UIButton) {
     }
     
     func setSelectedProduct(Pname:String,PvoteUp:Int,PvoteDown:Int,Pdescription:String,Pimg:UIImage)
@@ -51,4 +42,35 @@ class MazizLaamInfoVC: UIViewController {
         self.Description=Pdescription;
         self.pic=Pimg;
     }
+    
+    @IBAction func voteUp(sender: UIButton) {
+        
+    }
+    
+    @IBAction func voteDown(sender: UIButton) {
+        
+    }
+    
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -360,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NlK-vV-me3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1823" y="-1164"/>
+            <point key="canvasLocation" x="-3284" y="-3088"/>
         </scene>
         <!--ImageVC-->
         <scene sceneID="CmR-iy-DiR">
@@ -392,7 +392,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpL-S3-tHO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CkD-7O-uJf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1145" y="-1164"/>
+            <point key="canvasLocation" x="-2606" y="-3088"/>
         </scene>
         <!--Maziz Laam InfoVC-->
         <scene sceneID="0Fx-m9-NAl">
@@ -465,13 +465,16 @@
                                     <constraint firstAttribute="height" constant="107" id="SRX-6I-24v"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljl-Oy-K2t">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljl-Oy-K2t">
                                 <rect key="frame" x="20" y="540" width="240" height="40"/>
                                 <color key="backgroundColor" red="0.98530453443527222" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="nc3-Ol-WIJ"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="mazizliVoteDown"/>
+                                <connections>
+                                    <action selector="voteDown:" destination="KjM-ry-Ygx" eventType="touchUpInside" id="aHf-dn-F0w"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkF-nU-qlm">
                                 <rect key="frame" x="340" y="540" width="240" height="40"/>
@@ -480,9 +483,12 @@
                                     <constraint firstAttribute="height" constant="40" id="klk-Of-AWG"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="mazizliVoteUp"/>
+                                <connections>
+                                    <action selector="voteUp:" destination="KjM-ry-Ygx" eventType="touchUpInside" id="ICU-5O-YGY"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אז למה זה אמור להזיז לנו!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7d-pK-5nX">
-                                <rect key="frame" x="425" y="307" width="154.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אז למה זה אמור להזיז לנו!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7d-pK-5nX">
+                                <rect key="frame" x="416.5" y="307" width="163.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -515,6 +521,7 @@
                             <constraint firstItem="3Dj-Rd-YMa" firstAttribute="centerY" secondItem="PVQ-eW-mpE" secondAttribute="centerY" id="U8O-Ye-S2N"/>
                             <constraint firstItem="lzk-Fk-cfr" firstAttribute="centerY" secondItem="3Dj-Rd-YMa" secondAttribute="centerY" id="b8V-0p-51f"/>
                             <constraint firstItem="Ljl-Oy-K2t" firstAttribute="width" secondItem="te5-VG-s9W" secondAttribute="width" multiplier="0.4" id="dza-1j-anv"/>
+                            <constraint firstItem="Ljl-Oy-K2t" firstAttribute="height" secondItem="te5-VG-s9W" secondAttribute="height" id="erA-Cf-RXf"/>
                             <constraint firstItem="oRy-pJ-rJY" firstAttribute="top" secondItem="Ejd-5d-KFw" secondAttribute="bottom" constant="10" id="euB-aU-JKL"/>
                             <constraint firstItem="lzk-Fk-cfr" firstAttribute="centerX" secondItem="3Dj-Rd-YMa" secondAttribute="centerX" id="gD1-2d-PPe"/>
                             <constraint firstAttribute="leadingMargin" secondItem="dKB-4B-cVF" secondAttribute="leading" id="gYh-24-EvN"/>

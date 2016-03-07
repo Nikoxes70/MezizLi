@@ -29,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		6C11A06E1C8DCFAE008FDF0B /* ProductCTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductCTBC.swift; path = MezizLi/ProductCTBC.swift; sourceTree = "<group>"; };
+		6C11A0701C8DD1BC008FDF0B /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Validator.swift; path = MezizLi/Validator.swift; sourceTree = "<group>"; };
 		758F3B1A1C8C2F0E005D1EF5 /* MezizLi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezizLi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		758F3B1D1C8C2F0E005D1EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		758F3B221C8C2F0E005D1EF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		758F3B111C8C2F0E005D1EF5 = {
 			isa = PBXGroup;
 			children = (
+				6C11A0701C8DD1BC008FDF0B /* Validator.swift */,
 				6C11A06E1C8DCFAE008FDF0B /* ProductCTBC.swift */,
 				758F3B1C1C8C2F0E005D1EF5 /* MezizLi */,
 				758F3B1B1C8C2F0E005D1EF5 /* Products */,

@@ -14,7 +14,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     var name:String = "";
     override func viewDidAppear(animated: Bool) {
-        UDefaults.removeObjectForKey("LoggedUser")
+       // UDefaults.removeObjectForKey("LoggedUser")
         if let s = UDefaults.objectForKey("LoggedUser"){
             print("wellcome \(s)")
         }else{
