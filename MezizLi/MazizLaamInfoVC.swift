@@ -15,7 +15,9 @@ class MazizLaamInfoVC: UIViewController {
     @IBOutlet weak var productTtl: UILabel!
     @IBOutlet weak var productImg: UIImageView!
     @IBOutlet weak var productDescriptionText: UITextView!
+
     
+   
     
     private var Name:String="";
     private var VoteUp:Int=0;
@@ -25,8 +27,6 @@ class MazizLaamInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //productImg.image = UIImage(named: "group")!
-        
         productTtl.text=Name;
         voteUp.text = "\(VoteUp)";
         voteDown.text = "\(VoteDown)";

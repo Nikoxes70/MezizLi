@@ -16,23 +16,11 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     override func viewDidLoad() {
         
+        
         DBClient.products.removeAll();
-        //DBClient.pics.removeAll();
-        
-//        AsyncTask(backgroundTask: {()->[Product] in
-//            return Client().getDataFromServer();
-//            }, afterTask: {(db:[Product])in
-//         self.tableView.reloadData();
-//                
-//                print("the end")
-//                for i in db{
-//                    print("\(i.name)")
-//                }
-//                
-//        }).execute()
-        //Client().getDataFromServer();
+
        getDataFromServer()
-        
+        //tableView.allowsSelection = false;
        
     }
     @IBAction func backToMaziz(sender:UIStoryboardSegue){
@@ -52,16 +40,14 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             self.readJSON(d!)
             
         }).resume();
-        
-        // print(db)
-        //return db
+
     }
     
     
     //read from the server
     private func readJSON(d:NSData)//->[Product]
     {
-        var image : UIImage?
+        
         
         var json:[[String:AnyObject]];
         do{
@@ -72,37 +58,39 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             
             json = [];
         }
-     
+        
         for i in json
         {
-            let category = (i["category"]! as! String);
-            let name = (i["name"]! as! String);
-            let description = (i["description"]! as! String);
-            let voteUp = (i["voteUp"]! as! String);
-            let voteDown = (i["voteDown"]! as! String);
-            let img = (i["img"]! as! String);
-            let date = 0.0
-            let user = ""
-            let UPC = ""
-            
-            
-            if let url = NSURL(string: img){
-                if let data = NSData(contentsOfURL: url){
-                    image = UIImage(data: data)!
+            AsyncTask(backgroundTask: {(i)in
+                
+                var image : UIImage?
+                let category = (i["category"]! as! String);
+                let name = (i["name"]! as! String);
+                let description = (i["description"]! as! String);
+                let voteUp = (i["voteUp"]! as! String);
+                let voteDown = (i["voteDown"]! as! String);
+                let img = (i["img"]! as! String);
+                let date = 0.0
+                let user = ""
+                let UPC = ""
+                
+                
+                if let url = NSURL(string: img){
+                    if let data = NSData(contentsOfURL: url){
+                        image = UIImage(data: data)!
+                    }
                 }
-            }
-            
-            
-            //DBClient.pics.append(UIImage(data: data!)!)
-            
-            //DBClient.products.append(["name": "\(name)", "description": "\(description)","voteUp":"\(voteUp)", "voteDown": "\(voteDown)", "category": "\(category)"])
-            
-            DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, date: date, UPC: UPC, user: user, img: image))
-            
+                
+                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, date: date, UPC: UPC, user: user, img: image))
+                
+                }, afterTask: {()in
+                    
+                    self.tableView.reloadData()
+                    
+                    
+                    
+            }).execute(i)
         }
-        self.tableView.reloadData()
-       // MazizLaamVC().reload()
-        //return DBClient.products
     }
     
  
@@ -121,14 +109,23 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     // display name in eath row
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = UITableViewCell();
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! ProductCTBC
         
-        cell.textLabel?.text = DBClient.products[indexPath.row].name;
-        cell.imageView?.image = DBClient.products[indexPath.row].img;
+        cell.ttlForCell.text = DBClient.products[indexPath.row].name;
+        cell.imgForCell?.image = DBClient.products[indexPath.row].img;
+        //
+        cell.imgForCell.clipsToBounds=true;
+        //cell.imgForCell?.layer.borderWidth = CGFloat(1.0);
+        //cell.imgForCell?.layer.borderColor = UIColor.yellowColor().CGColor
+        cell.imgForCell?.layer.cornerRadius = CGFloat(55);
+        //
+        cell.voteUpTTL.text = "\(DBClient.products[indexPath.row].voteUp)";
+        cell.voteDownTTL.text = "\(DBClient.products[indexPath.row].voteDown)";
+     
         
         return cell;
     }
-    
+
     //do action on click on 1 row
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         
@@ -138,6 +135,8 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
         
         nextScreen.setSelectedProduct(product.name, PvoteUp: product.voteUp, PvoteDown: product.voteDown, Pdescription: product.description,Pimg: product.img!)
+       
+        
         
         showViewController(nextScreen, sender: self);
         
