@@ -79,17 +79,24 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                 let voteDown = (i["voteDown"]! as! String);
                 let img = (i["img"]! as! String);
                 let date = 0.0
-                let user = ""
+                let user = (i["owner"]! as! String)
                 let UPC = ""
-                
+                print(user);
                 
                 if let url = NSURL(string: img){
                     if let data = NSData(contentsOfURL: url){
                         image = UIImage(data: data)!
                     }
                 }
+                let newProduct = Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image);
                 
-                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image))
+                if let loggedUser = self.UDefaults.objectForKey("LoggedUser") as? String{
+                    if loggedUser == newProduct.user{
+                        DBClient.myProducts.append(newProduct)
+                    }
+                }
+                
+                DBClient.products.append(newProduct)
                 
                 }, afterTask: {()in
                     
