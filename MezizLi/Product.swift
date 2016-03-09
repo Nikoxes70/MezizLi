@@ -8,19 +8,19 @@
 
 import Foundation
 import UIKit
-class  Product {
+public class  Product {
     
-    var name:String;
-    var description:String;
-    var category:String;
-    var voteUp:Int;
-    var voteDown:Int;
-    var date:Double;
-    var UPC:String;
-    var user:String;
-    var img:UIImage?;
+   public var name:String;
+   public var description:String;
+   public var category:String;
+   public var voteUp:Int;
+   public var voteDown:Int;
+   public var date:Double;
+   public var UPC:String;
+   public var user:String;
+   public var img:UIImage?;
     
-    init(itemName:String,itemDescription:String,itemCategory:String,itemVoteUp:Int,itemVoteDown:Int,currentDate:Double?,UPC:String?,user:String,img:UIImage?){
+    public init(itemName:String,itemDescription:String,itemCategory:String,itemVoteUp:Int,itemVoteDown:Int,currentDate:Double?,UPC:String?,user:String,img:UIImage?){
         
         self.name = itemName;
         self.description = itemDescription;
