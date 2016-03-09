@@ -50,10 +50,12 @@ var isOk = false
     @IBAction func login(sender: UIButton) {
         loader.hidden = false
         loader.startAnimating()
-        if phone.text?.isEmpty != nil{
-            loginUser(phone.text!)
+       
+        if (Validator().getValidPhoneNumber(phone.text!)) != nil{
+        loginUser(phone.text!)
         }else{
-            dialog("Please fill phone number")
+            loader.hidden = true
+            dialog("Invalid phone number")
         }
     }
     func dialog(txt:String){

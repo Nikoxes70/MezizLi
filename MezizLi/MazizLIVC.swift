@@ -62,7 +62,7 @@ import UIKit
             let product=DBClient.myProducts[indexPath.row];
             
             
-            nextScreen.setSelectedProduct(product.name, PvoteUp: product.voteUp, PvoteDown: product.voteDown, Pdescription: product.description,Pimg: product.img!)
+            nextScreen.setSelectedProduct(product.name, PvoteUp: product.voteUp, PvoteDown: product.voteDown, Pdescription: product.description,Pimg: product.img!,id: 0,Voted: "")
             
             
             

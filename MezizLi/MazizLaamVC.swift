@@ -18,7 +18,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         if let s = UDefaults.objectForKey("LoggedUser"){
             print("wellcome \(s)")
         }else{
-            performSegueWithIdentifier("register", sender: self)
+            performSegueWithIdentifier("sign", sender: self)
         }
     }
     override func viewDidLoad() {
@@ -79,7 +79,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                         image = UIImage(data: data)!
                     }
                 }
-                let newProduct = Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image);
+               // let newProduct = Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id:Int(id)!,Voted: voted);
                 
                 DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id: Int(id)!,Voted:voted))
                 
@@ -95,7 +95,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     //number of row in table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        DBClient.products = ProductSorter.sortProductByVotes(DBClient.products)
+        //DBClient.products = ProductSorter.sortProductByVotes(DBClient.products)
         return DBClient.products.count;
     }
     

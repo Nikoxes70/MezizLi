@@ -144,7 +144,7 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
         let userPhone = UDefaults.objectForKey("LoggedUser") as? String;
         let timeStemp=NSDate().timeIntervalSince1970;
         //let img = "http://m.pricez.co.il/ProductPictures/200x/\(myProduct.UPC).jpg"
-        myProduct = Product(itemName: self.prodName.text!, itemDescription: self.desricption.text!, itemCategory: self.myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: userPhone!, img: self.imgView.image);
+        myProduct = Product(itemName: self.prodName.text!, itemDescription: self.desricption.text!, itemCategory: self.myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: userPhone!, img: self.imgView.image,id: 0,Voted: "");
         UploadProduct2DB().addProduct(myProduct);
        // self.performSegueWithIdentifier("MazizLi", sender: self);
 

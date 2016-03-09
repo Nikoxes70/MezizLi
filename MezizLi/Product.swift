@@ -30,7 +30,7 @@ public class  Product {
         if img != nil{
             self.img = img!;
         }else{
-            self.img!.valueForKey("default_product_img.jpg");
+            //self.img!.valueForKey("default_product_img.jpg");
         }
         self.voteUp=itemVoteUp;
         self.voteDown=itemVoteDown;
