@@ -79,9 +79,16 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                         image = UIImage(data: data)!
                     }
                 }
-               // let newProduct = Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id:Int(id)!,Voted: voted);
+                let newProduct = Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id:Int(id)!,Voted: voted);
                 
-                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id: Int(id)!,Voted:voted))
+                DBClient.products.append(newProduct)
+                let u = self.UDefaults.objectForKey("LoggedUser") as? String
+                if u == user{
+                    DBClient.products.append(newProduct)
+                }
+            
+                
+                //DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id: Int(id)!,Voted:voted))
                 
                 }, afterTask: {()in
                     self.tableView.reloadData()
