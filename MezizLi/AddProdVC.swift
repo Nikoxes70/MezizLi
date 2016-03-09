@@ -129,6 +129,7 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
     @IBAction func createAndSendProd(sender: AnyObject) {
         
         verifyField(desricption.text!, l:prodName.text! ) ? addProduct() : ();
+        
     }
     
     func addProduct(){
@@ -137,7 +138,8 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
         let myUPC=self.getUPC;
         let userPhone = UDefaults.objectForKey("LoggedUser") as? String;
         let timeStemp=NSDate().timeIntervalSince1970;
-        myProduct=Product(itemName: self.prodName.text!, itemDescription: self.desricption.text!, itemCategory: self.myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: userPhone!, img: self.imgView.image);
+        //let img = "http://m.pricez.co.il/ProductPictures/200x/\(myProduct.UPC).jpg"
+        myProduct = Product(itemName: self.prodName.text!, itemDescription: self.desricption.text!, itemCategory: self.myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: userPhone!, img: self.imgView.image);
         UploadProduct2DB().addProduct(myProduct);
        // self.performSegueWithIdentifier("MazizLi", sender: self);
 
@@ -146,6 +148,31 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
 //        }, afterTask: {
 //            self.performSegueWithIdentifier("MazizLi", sender: self);
 //        }).execute(myProduct);
+        //myProduct.img = UIImage(
         
+        if let url = NSURL(string: "http://m.pricez.co.il/ProductPictures/200x/\(self.getUPC).jpg"){
+            if let data = NSData(contentsOfURL: url){
+                myProduct.img = UIImage(data: data)!
+            }
+        }
+        
+        DBClient.myProducts.append(myProduct)
+        DBClient.products.append(myProduct)
+        
+        
+    }
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "backToML"{
+            return verifyField(desricption.text!, l:prodName.text!)
+            
+
+        }
+        return true
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "backToML"{
+            let d = segue.destinationViewController as! MazizLIVC
+            d.tableView.reloadData()
+            }
     }
 }
