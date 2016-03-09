@@ -10,7 +10,7 @@ import UIKit
 
 class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     let UDefaults = NSUserDefaults.standardUserDefaults();
-    
+
     @IBOutlet weak var tableView: UITableView!
     var name:String = "";
     override func viewDidAppear(animated: Bool) {
@@ -22,23 +22,17 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         }
     }
     override func viewDidLoad() {
-       
-        
-        
         DBClient.products.removeAll();
-
-       getDataFromServer()
-        //tableView.allowsSelection = false;
-       
-    }
-    @IBAction func backToMaziz(sender:UIStoryboardSegue){
-        
+        getDataFromServer()
     }
     
     override func viewWillAppear(animated: Bool) {
         
     }
     
+    @IBAction func backToMaziz(sender:UIStoryboardSegue){
+        
+    }
     
     func getDataFromServer()
     {
@@ -81,7 +75,8 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                 let date = 0.0
                 let user = ""
                 let UPC = ""
-                
+                let id = (i["id"]! as! String);
+                let voted = (i["voted"]! as! String);
                 
                 if let url = NSURL(string: img){
                     if let data = NSData(contentsOfURL: url){
@@ -89,7 +84,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                     }
                 }
                 
-                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image))
+                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id: Int(id)!,Voted:voted))
                 
                 }, afterTask: {()in
                     
@@ -123,9 +118,6 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         cell.imgForCell?.image = DBClient.products[indexPath.row].img;
         //
         cell.imgForCell.clipsToBounds=true;
-        //cell.imgForCell?.layer.borderWidth = CGFloat(1.0);
-        //cell.imgForCell?.layer.borderColor = UIColor.yellowColor().CGColor
-        cell.imgForCell?.layer.cornerRadius = CGFloat(55);
         //
         cell.voteUpTTL.text = "\(DBClient.products[indexPath.row].voteUp)";
         cell.voteDownTTL.text = "\(DBClient.products[indexPath.row].voteDown)";
@@ -133,20 +125,32 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
         return cell;
     }
-
+    //
+    private func izikColor(indexPath:NSIndexPath){
+        tableView.cellForRowAtIndexPath(indexPath)?.contentView.backgroundColor=UIColor.whiteColor();
+    }
+    
+    //
+    func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+        izikColor(indexPath);
+    }
+    
+    
+    
     //do action on click on 1 row
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        izikColor(indexPath);
         
         let nextScreen = storyboard?.instantiateViewControllerWithIdentifier("productINFO") as! MazizLaamInfoVC;
         
         let product=DBClient.products[indexPath.row];
         
-        
-        nextScreen.setSelectedProduct(product.name, PvoteUp: product.voteUp, PvoteDown: product.voteDown, Pdescription: product.description,Pimg: product.img!)
+        nextScreen.setSelectedProduct(product.name, PvoteUp: product.voteUp, PvoteDown: product.voteDown, Pdescription: product.description,Pimg: product.img!,id: product.id,Voted: product.voted);
        
         
         
         showViewController(nextScreen, sender: self);
         
     }
+    
 }

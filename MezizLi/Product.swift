@@ -19,9 +19,11 @@ class  Product {
     var UPC:String;
     var user:String;
     var img:UIImage?;
+    var id:Int;
+    var voted:String;
     
-    init(itemName:String,itemDescription:String,itemCategory:String,itemVoteUp:Int,itemVoteDown:Int,currentDate:Double?,UPC:String?,user:String,img:UIImage?){
-        
+    init(itemName:String,itemDescription:String,itemCategory:String,itemVoteUp:Int,itemVoteDown:Int,currentDate:Double?,UPC:String?,user:String,img:UIImage?,id:Int,Voted:String){
+        self.id = id
         self.name = itemName;
         self.description = itemDescription;
         self.category = itemCategory;
@@ -35,6 +37,7 @@ class  Product {
         self.date = currentDate!;
         self.UPC = UPC != nil ? UPC! : "";
         self.user = user;
+        self.voted=Voted;
     }
     
 }
