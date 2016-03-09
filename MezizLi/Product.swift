@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class  Product {
+public class  Product {
     
     var name:String;
     var description:String;

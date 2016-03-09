@@ -1,11 +1,3 @@
-//
-//  Validator.swift
-//  FoodCollector
-//
-//  Created by Boris Tsigelman on 23/09/15.
-//  Copyright © 2015 Foodonet. All rights reserved.
-//
-
 import UIKit
 
 class Validator: NSObject {
@@ -24,17 +16,9 @@ class Validator: NSObject {
     }
     
     private func validatePhoneNumber(digitsOnlyNumber: String) -> Bool{
-        let twoDigitAreaCodes = ["02", "03", "04", "08", "09"]
-        let threeDigitAreaCodes = ["050", "052", "053", "054", "055", "056", "058", "059", "072", "073", "074", "076", "077", "078"]
+        //let twoDigitAreaCodes = ["02", "03", "04", "08", "09"]
+        let threeDigitAreaCodes = ["050", "052", "053", "054", "055", "056", "058", "059"]
         // The list above is based on "http://he.wikipedia.org/wiki/קידומת_טלפון_בישראל"
-        
-        // Check if phone lenght is 9 digits
-        if digitsOnlyNumber.characters.count == 9 {
-            // Check if the two digit area code is legal
-            if checkAreaCode(digitsOnlyNumber,areaCodes: twoDigitAreaCodes) {
-                return true
-            }
-        }
         
         // Check if phone lenght is 10 digits
         if digitsOnlyNumber.characters.count == 10 {

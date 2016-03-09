@@ -44,13 +44,9 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         }).resume();
 
     }
-    
-    
     //read from the server
     private func readJSON(d:NSData)
     {
-        
-        
         var json:[[String:AnyObject]];
         do{
             
@@ -73,7 +69,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                 let voteDown = (i["voteDown"]! as! String);
                 let img = (i["img"]! as! String);
                 let date = 0.0
-                let user = ""
+                let user = (i["owner"]! as! String)
                 let UPC = ""
                 let id = (i["id"]! as! String);
                 let voted = (i["voted"]! as! String);
@@ -83,21 +79,15 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                         image = UIImage(data: data)!
                     }
                 }
+                let newProduct = Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image);
                 
                 DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id: Int(id)!,Voted:voted))
                 
                 }, afterTask: {()in
-                    
                     self.tableView.reloadData()
-                    
-                    
-                    
             }).execute(i)
         }
     }
-    
- 
-    
     //number sec in table
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1;
@@ -105,7 +95,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     //number of row in table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        DBClient.products = ProductSorter.sortProductByVotes(DBClient.products)
         return DBClient.products.count;
     }
     

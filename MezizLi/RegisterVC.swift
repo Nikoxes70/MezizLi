@@ -9,6 +9,7 @@
 import UIKit
 
 class RegisterVC: UIViewController {
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     var isOk = false
     @IBOutlet weak var txtEmailRegVC: UITextField!
     @IBOutlet weak var txtFirstRegVC: UITextField!
@@ -16,7 +17,49 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var txtPhoneRegVC: UITextField!
     
     @IBOutlet weak var ERROR: UILabel!
+   
+    func addUser(firstName:String, lastName:String, email:String, phoneNumber:String){
+        
+        print("\(firstName),\(lastName),\(email),\(phoneNumber)");
+        
+        let request = NSMutableURLRequest(URL: NSURL(string:"http://www.itzikne.5gbfree.com/DBUsers/postDataPhp.php")!);
+        
+        request.HTTPMethod = "POST";
+        
+                request.HTTPBody = "firstName=\(firstName)&lastName=\(lastName)&email=\(email)&phoneNumber=\(phoneNumber)".dataUsingEncoding(NSUTF8StringEncoding);
+
+        NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(d,r,e)in
+            AsyncTask(backgroundTask: { ()->String in
+                
+                var result = ""
+                if e == nil{
+                result = String(data: d!, encoding: NSUTF8StringEncoding)!
+                }
+                
+                return result
+                
+                }, afterTask: {(result)in
+                    self.loader.hidden = true
+                    if result.rangeOfString("success") != nil{
+                        self.goOn()
+                    }else if result.rangeOfString("number") != nil{
+                        self.dialogERROR("Error", body: "This phone number already registered")
+                    }else{
+                        self.dialogERROR("Error", body: "Some internet issues please try again later")
+                    }
+            }).execute()
+            }).resume()
     
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+              addUnderline(txtPhoneRegVC)
+              addUnderline(txtEmailRegVC)
+              addUnderline(txtLastRegVC)
+              addUnderline(txtFirstRegVC)
+        
+        loader.hidden = true
+    }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
     }
@@ -68,19 +111,40 @@ class RegisterVC: UIViewController {
         })
     }
     func addUserAndLogin(){
+        loader.hidden = false
+        loader.startAnimating()
         let UDefaluts = NSUserDefaults.standardUserDefaults();
         
         UDefaluts.setValue(txtPhoneRegVC.text!, forKey: "LoggedUser");
         
-        print(Client().addUser(txtFirstRegVC.text!, lastName: txtLastRegVC.text!, email: txtEmailRegVC.text!, phoneNumber: txtPhoneRegVC.text!));
+        addUser(txtFirstRegVC.text!, lastName: txtLastRegVC.text!, email: txtEmailRegVC.text!, phoneNumber: txtPhoneRegVC.text!);
+        //print("is!"+s)
         
+    }
+    func goOn(){
+       
         isOk = true
     }
+    
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == "login"{
+        if identifier == "registerNew"{
             return isOk
         }
         return true
     }
-    
+    func dialogERROR(ttl:String,body:String){
+        let dialog = UIAlertController(title: ttl, message: body, preferredStyle: .Alert)
+        dialog.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        self.presentViewController(dialog, animated: true, completion: nil)
+    }
+    func addUnderline(txt:UITextField){
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.grayColor().CGColor
+        border.frame = CGRect(x: 0, y: txt.frame.size.height - width, width:  txt.frame.size.width, height: txt.frame.size.height)
+        
+        border.borderWidth = width
+        txt.layer.addSublayer(border)
+        txt.layer.masksToBounds = true
+    }
 }

@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 class Client{
-    
-    func addUser(firstName:String, lastName:String, email:String, phoneNumber:String){
-        
+   
+    func addUser(firstName:String, lastName:String, email:String, phoneNumber:String)->String{
+        var result:String = "none"
         print("\(firstName),\(lastName),\(email),\(phoneNumber)");
         
         let request = NSMutableURLRequest(URL: NSURL(string:"http://www.itzikne.5gbfree.com/DBUsers/postDataPhp.php")!);
@@ -20,13 +20,28 @@ class Client{
         
         request.HTTPBody = "firstName=\(firstName)&lastName=\(lastName)&email=\(email)&phoneNumber=\(phoneNumber)".dataUsingEncoding(NSUTF8StringEncoding);
         
-        NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(d,r,e)in
-            if e == nil{
-                print(String(data: d!, encoding: NSUTF8StringEncoding)!);
-            }else{
-                print("Error adding user");
-            }
-        }).resume()
+        
+        AsyncTask(backgroundTask: {() in
+            
+            
+            NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(d,r,e)in
+                if e == nil{
+                    print(String(data: d!, encoding: NSUTF8StringEncoding)!);
+                    result = String(data: d!, encoding: NSUTF8StringEncoding)!
+                    
+                }else{
+                    result = "Error adding user please try again later";
+                }
+            }).resume()
+
+            
+            }, afterTask: {()in
+                
+        }).execute()
+        
+        return result
+        
+       
     }
     
     
