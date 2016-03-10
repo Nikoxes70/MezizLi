@@ -124,6 +124,7 @@ class RegisterVC: UIViewController {
     func goOn(){
        
         isOk = true
+        performSegueWithIdentifier("registerNew", sender: self)
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {

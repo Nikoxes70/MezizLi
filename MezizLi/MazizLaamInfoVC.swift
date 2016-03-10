@@ -229,12 +229,14 @@ class MazizLaamInfoVC: UIViewController {
         for(var i=0; i<DBClient.products.count; i++){
             if DBClient.products[i].id == productId{
                 DBClient.products[i].voteUp++;
+                DBClient.products[i].voted.appendContentsOf(userId)
                 self.toReload = true
             }
         }
         for(var i=0; i<DBClient.myProducts.count; i++){
             if DBClient.myProducts[i].id == productId{
                 DBClient.myProducts[i].voteUp++;
+                DBClient.myProducts[i].voted.appendContentsOf(userId)
                 self.toReload = true
             }
         }
@@ -245,12 +247,14 @@ class MazizLaamInfoVC: UIViewController {
         for(var i=0; i<DBClient.products.count; i++){
             if DBClient.products[i].id == productId{
                 DBClient.products[i].voteDown++;
+                DBClient.products[i].voted.appendContentsOf(userId)
                 self.toReload = true
             }
         }
         for(var i=0; i<DBClient.myProducts.count; i++){
             if DBClient.myProducts[i].id == productId{
                 DBClient.myProducts[i].voteDown++;
+                DBClient.myProducts[i].voted.appendContentsOf(userId)
                 self.toReload = true
             }
         }

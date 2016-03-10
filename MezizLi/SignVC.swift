@@ -13,4 +13,7 @@ class SignVC: UIViewController {
     override func viewDidLoad() {
      
     }
+    @IBAction func backToSign(segue:UIStoryboardSegue){
+        
+    }
 }

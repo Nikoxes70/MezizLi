@@ -84,12 +84,13 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                 let newProduct = Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id:Int(id)!,Voted: voted);
                 
                 DBClient.products.append(newProduct)
-                let u = self.UDefaults.objectForKey("LoggedUser") as? String
-
-                if u! == user{
-                    DBClient.myProducts.append(newProduct)
+                if let u = self.UDefaults.objectForKey("LoggedUser") as? String{
+                    if u == user{
+                        DBClient.myProducts.append(newProduct)
+                    }
                 }
-            
+
+                
                 
                 //DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id: Int(id)!,Voted:voted))
                 

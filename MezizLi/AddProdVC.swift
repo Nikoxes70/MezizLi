@@ -131,7 +131,7 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
         
         let timeStemp=NSDate().timeIntervalSince1970;
         let mProdcut=Product(itemName: prodName.text!, itemDescription: desricption.text!, itemCategory: myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: "", img: imgView.image,id: 0,Voted:"")
-        UploadProduct2DB().addProduct(mProdcut);
+        //UploadProduct2DB().addProduct(mProdcut);
         
         verifyField(desricption.text!, l:prodName.text! ) ? addProduct() : ();
         
