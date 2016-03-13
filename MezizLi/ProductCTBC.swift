@@ -8,7 +8,6 @@
 import UIKit
 import Foundation
 class ProductCTBC:UITableViewCell{
-    
     @IBOutlet weak var imgForCell: UIImageView!
     @IBOutlet weak var ttlForCell: UILabel!
     @IBOutlet weak var voteUpTTL: UILabel!

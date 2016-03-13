@@ -9,11 +9,5 @@
 import UIKit
 
 class SignVC: UIViewController {
-
-    override func viewDidLoad() {
-     
-    }
-    @IBAction func backToSign(segue:UIStoryboardSegue){
-        
-    }
+    @IBAction func backToSign(segue:UIStoryboardSegue){}//unwind segue to SignVC
 }

@@ -9,7 +9,7 @@
 import UIKit
     
     class MazizLIVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
-        
+        let DBC = DBClient.getDBClient()
         
         let UDefaults = NSUserDefaults.standardUserDefaults();
        
@@ -34,21 +34,20 @@ import UIKit
         //number of row in table
         func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
-            return DBClient.myProducts.count;
-        }
+            return DBC.myProducts.count        }
         
         // display name in eath row
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("MyCell") as! MyProductCTBC
-            cell.mttlForCell.text = DBClient.myProducts[indexPath.row].name;
-            cell.mimgForCell?.image = DBClient.myProducts[indexPath.row].img;
+            cell.mttlForCell.text = DBC.myProducts[indexPath.row].name;
+            cell.mimgForCell?.image = DBC.myProducts[indexPath.row].img;
             //
             cell.mimgForCell.clipsToBounds=true;
             cell.mimgForCell?.layer.cornerRadius = CGFloat(55);
             //
-            cell.mvoteUpTTL.text = "\(DBClient.myProducts[indexPath.row].voteUp)";
-            cell.mvoteDownTTL.text = "\(DBClient.myProducts[indexPath.row].voteDown)";
+            cell.mvoteUpTTL.text = "\(DBC.myProducts[indexPath.row].voteUp)";
+            cell.mvoteDownTTL.text = "\(DBC.myProducts[indexPath.row].voteDown)";
             
             
             return cell;
@@ -59,7 +58,7 @@ import UIKit
             
             let nextScreen = storyboard?.instantiateViewControllerWithIdentifier("productINFO") as! MazizLaamInfoVC;
             
-            let product=DBClient.myProducts[indexPath.row];
+            let product = DBC.myProducts[indexPath.row];
             
             
             nextScreen.setSelectedProduct(product.name, PvoteUp: product.voteUp, PvoteDown: product.voteDown, Pdescription: product.description,Pimg: product.img!,id: 0,Voted: "")

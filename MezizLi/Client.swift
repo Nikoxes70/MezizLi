@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 class Client{
-   
+   let DBC = DBClient.getDBClient()
+    
+    
     func addUser(firstName:String, lastName:String, email:String, phoneNumber:String)->String{
         var result:String = "none"
         print("\(firstName),\(lastName),\(email),\(phoneNumber)");
@@ -38,83 +40,80 @@ class Client{
             }, afterTask: {()in
                 
         }).execute()
-        
+        print(DBC.products.count)
         return result
         
-       
     }
     
-    
-    func getDataFromServer()///->[Product]
+    func getDataFromServer(user:String,tv:UITableView?=nil)
     {
-        //get data from server
-        //var db:[Product]!
         
         NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://www.itzikne.5gbfree.com/DBProducts/getDataPhp.php")!, completionHandler: {d,r,e in
             
-//            AsyncTask(backgroundTask: { () ->[Product]  in
-//                
-//                db = self.readJSON(d!)
-//                return db
-//                }) { (str) -> () in
-//                    
-//                }.execute()
-            self.readJSON(d!)
+            self.readJSON(d!,user: user,tv: tv)
             
         }).resume();
         
-       // print(db)
-        //return db
     }
-    
-    
-    //read from the server
-    private func readJSON(d:NSData)//->[Product]
+    //read from the server with 'd'->data from server,'user'->currentrly logged user,->'tv' tableView where reloadData to
+    private func readJSON(d:NSData,user:String,tv:UITableView?)
     {
-        var image : UIImage?
-        
         var json:[[String:AnyObject]];
         do{
-            
             json = (try NSJSONSerialization.JSONObjectWithData(d, options: [])) as! Array
-            
         }catch{
-            
             json = [];
         }
-        //print(json);
+        
         for i in json
         {
-            let category = (i["category"]! as! String);
-            let name = (i["name"]! as! String);
-            let description = (i["description"]! as! String);
-            let voteUp = (i["voteUp"]! as! String);
-            let voteDown = (i["voteDown"]! as! String);
-            let img = (i["img"]! as! String);
-            let date = 0.0
-            let user = ""
-            let UPC = ""
-            
-            
-            if let url = NSURL(string: img){
-                if let data = NSData(contentsOfURL: url){
-                     image = UIImage(data: data)!
-                }
-            }
-            
-           
-            //DBClient.pics.append(UIImage(data: data!)!)
-            
-            //DBClient.products.append(["name": "\(name)", "description": "\(description)","voteUp":"\(voteUp)", "voteDown": "\(voteDown)", "category": "\(category)"])
-            
-            DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id: 0,Voted:""))
+            AsyncTask(backgroundTask: {(i)in
 
+                var image : UIImage?
+                let category = (i["category"]! as! String);
+                let name = (i["name"]! as! String);
+                let description = (i["description"]! as! String);
+                let voteUp = (i["voteUp"]! as! String);
+                let voteDown = (i["voteDown"]! as! String);
+                let img = (i["img"]! as! String);
+                let date = 0.0
+                let userFromServer = (i["owner"]! as! String)
+                let UPC = ""
+                let id = (i["id"]! as! String);
+                let voted = (i["voted"]! as! String);
+                
+                if let url = NSURL(string: img){
+                    if let data = NSData(contentsOfURL: url){
+                        image = UIImage(data: data)!
+                    }
+                }else{
+                    
+                }
+                
+                let newProduct = Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: userFromServer, img: image,id:Int(id)!,Voted: voted);
+                
+                self.DBC.products.append(newProduct)
+               
+                    if user == user{
+                        self.DBC.myProducts.append(newProduct)
+                    }
+                
+                }, afterTask: {()in
+                    
+                    tv != nil ? tv!.reloadData() : ()
+                    
+            }).execute(i)
         }
-       // MazizLaamVC().reload()
-        //return DBClient.products
     }
-    
-    
+//    func reloadDataFromServer(user:String,tv:UITableView? = nil){
+//        
+//        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://www.itzikne.5gbfree.com/DBProducts/getDataPhp.php")!, completionHandler: {d,r,e in
+//            
+//            //self.readJSON(d!,user: user,tv: tv)
+//            
+//        }).resume();
+//
+//    }
     
 }
 

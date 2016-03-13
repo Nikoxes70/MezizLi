@@ -8,9 +8,20 @@
 
 import Foundation
 import UIKit
-class DBClient{
+
+public class DBClient{
     
-    static var products:[Product] = []
-    static var myProducts:[Product] = []
+    var products:[Product] = []
+    var myProducts:[Product] = []
+
     
+    private static var DBC : DBClient!
+    
+    private init(){}
+
+    public static func getDBClient()->DBClient{
+        DBClient.DBC == nil ? DBClient.DBC = DBClient() : ();
+        return DBClient.DBC
+        
+    }
 }

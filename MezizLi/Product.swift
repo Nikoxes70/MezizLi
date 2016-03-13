@@ -22,6 +22,10 @@ public class  Product {
     var id:Int;
     var voted:String;
     
+//    public var hashValue: Int {
+//        return self.id
+//    }
+    
     init(itemName:String,itemDescription:String,itemCategory:String,itemVoteUp:Int,itemVoteDown:Int,currentDate:Double?,UPC:String?,user:String,img:UIImage?,id:Int,Voted:String){
         self.id = id
         self.name = itemName;
@@ -39,6 +43,10 @@ public class  Product {
         self.user = user;
         self.voted=Voted;
     }
+//    @warn_unused_result
+//    public func !=(lhs: User, rhs: User) -> Bool {
+//    return lhs.id == rhs.id
+//    }
     
 }
 

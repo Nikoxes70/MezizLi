@@ -1,11 +1,14 @@
+//
+//  Validator.swift
+//  MezizLi
+//
+//  Created by Nikolai Volodin on 08/03/2016.
+//  Copyright © 2016 Nikolai Volodin. All rights reserved.
+//
 import UIKit
 
 class Validator: NSObject {
-    
-    ////===========================================================================
-    ////   MARK: - Phone Number Validator
-    ////===========================================================================
-    
+
     func getValidPhoneNumber(stringToValidate: String) -> String? {
         let digitsOnlyNumber = getOnlyDigitsNumber(stringToValidate)
         if (validatePhoneNumber(digitsOnlyNumber)) {
@@ -43,7 +46,7 @@ class Validator: NSObject {
         
         return tempPhoneString
     }
-    
+    //Checks the area code if exist
     private func checkAreaCode(phoneNumber: String, areaCodes: [String]) -> Bool {
         for areaCode in areaCodes {
             if phoneNumber.hasPrefix(areaCode) {
@@ -53,11 +56,4 @@ class Validator: NSObject {
         
         return false
     }
-    
-    
-    ////===========================================================================
-    ////   END - Phone Number Validator
-    ////===========================================================================
-    
-    
 }

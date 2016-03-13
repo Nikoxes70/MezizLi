@@ -13,6 +13,7 @@ import AssetsLibrary;
 import Photos;
 
 class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    let DBC = DBClient.getDBClient()
     
     let UDefaults = NSUserDefaults.standardUserDefaults();
 
@@ -127,10 +128,10 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
 
     
     @IBAction func createAndSendProd(sender: AnyObject) {
-        let myUPC=getUPC;
+        //let myUPC=getUPC;
         
-        let timeStemp=NSDate().timeIntervalSince1970;
-        let mProdcut=Product(itemName: prodName.text!, itemDescription: desricption.text!, itemCategory: myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: "", img: imgView.image,id: 0,Voted:"")
+        //let timeStemp=NSDate().timeIntervalSince1970;
+        //let mProdcut=Product(itemName: prodName.text!, itemDescription: desricption.text!, itemCategory: myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: "", img: imgView.image,id: 0,Voted:"")
         //UploadProduct2DB().addProduct(mProdcut);
         
         verifyField(desricption.text!, l:prodName.text! ) ? addProduct() : ();
@@ -161,8 +162,9 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
             }
         }
         
-        DBClient.myProducts.append(myProduct)
-        DBClient.products.append(myProduct)
+
+        DBC.products.append(myProduct)
+        DBC.myProducts.append(myProduct)
         
         
     }

@@ -9,96 +9,32 @@
 import UIKit
 
 class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    
+    var timer : NSTimer?
+    var DBCLoadToken: dispatch_once_t = 0
     let UDefaults = NSUserDefaults.standardUserDefaults();
-
+    let DBC = DBClient.getDBClient()
+    
     @IBOutlet weak var tableView: UITableView!
-    var name:String = "";
+    
     override func viewDidAppear(animated: Bool) {
        // UDefaults.removeObjectForKey("LoggedUser")
-        if let s = UDefaults.objectForKey("LoggedUser"){
-            print("wellcome \(s)")
-        }else{
-            performSegueWithIdentifier("sign", sender: self)
+                    dispatch_once(&DBCLoadToken, {
+        if let _ = self.UDefaults.objectForKey("LoggedUser") as? String{
+            //Client().getDataFromServer(user, tv: self.tableView) //calls once on appStart
+            }else{
+            self.performSegueWithIdentifier("sign", sender: self)
         }
-    }
-    override func viewDidLoad() {
-        DBClient.products.removeAll();
-        getDataFromServer()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+    })
         
+        timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "updateData:", userInfo: nil, repeats: true)
+
+
     }
-    
     @IBAction func backToMaziz(sender:UIStoryboardSegue){
         
     }
     
-    func getDataFromServer()
-    {
-        
-        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://www.itzikne.5gbfree.com/DBProducts/getDataPhp.php")!, completionHandler: {d,r,e in
-           
-            self.readJSON(d!)
-            
-        }).resume();
-
-    }
-    //read from the server
-    private func readJSON(d:NSData)
-    {
-        var json:[[String:AnyObject]];
-        do{
-            
-            json = (try NSJSONSerialization.JSONObjectWithData(d, options: [])) as! Array
-            
-        }catch{
-            
-            json = [];
-        }
-        
-        for i in json
-        {
-            AsyncTask(backgroundTask: {(i)in
-                
-                var image : UIImage?
-                let category = (i["category"]! as! String);
-                let name = (i["name"]! as! String);
-                let description = (i["description"]! as! String);
-                let voteUp = (i["voteUp"]! as! String);
-                let voteDown = (i["voteDown"]! as! String);
-                let img = (i["img"]! as! String);
-                let date = 0.0
-                let user = (i["owner"]! as! String)
-                let UPC = ""
-                let id = (i["id"]! as! String);
-                let voted = (i["voted"]! as! String);
-                
-                if let url = NSURL(string: img){
-                    if let data = NSData(contentsOfURL: url){
-                        image = UIImage(data: data)!
-                    }
-                }else{
-                    
-                }
-                let newProduct = Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id:Int(id)!,Voted: voted);
-                
-                DBClient.products.append(newProduct)
-                if let u = self.UDefaults.objectForKey("LoggedUser") as? String{
-                    if u == user{
-                        DBClient.myProducts.append(newProduct)
-                    }
-                }
-
-                
-                
-                //DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id: Int(id)!,Voted:voted))
-                
-                }, afterTask: {()in
-                    self.tableView.reloadData()
-            }).execute(i)
-        }
-    }
     //number sec in table
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1;
@@ -107,7 +43,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     //number of row in table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //DBClient.products = ProductSorter.sortProductByVotes(DBClient.products)
-        return DBClient.products.count;
+        return DBC.products.count
     }
     
     // display name in eath row
@@ -115,13 +51,14 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! ProductCTBC
         
-        cell.ttlForCell.text = DBClient.products[indexPath.row].name;
-        cell.imgForCell?.image = DBClient.products[indexPath.row].img;
+        cell.ttlForCell.text = DBC.products[indexPath.row].name;
+        cell.imgForCell?.image = DBC.products[indexPath.row].img;
         //
+
         cell.imgForCell.clipsToBounds=true;
         //
-        cell.voteUpTTL.text = "\(DBClient.products[indexPath.row].voteUp)";
-        cell.voteDownTTL.text = "\(DBClient.products[indexPath.row].voteDown)";
+        cell.voteUpTTL.text = "\(DBC.products[indexPath.row].voteUp)";
+        cell.voteDownTTL.text = "\(DBC.products[indexPath.row].voteDown)";
      
         
         return cell;
@@ -144,7 +81,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
         let nextScreen = storyboard?.instantiateViewControllerWithIdentifier("productINFO") as! MazizLaamInfoVC;
         
-        let product=DBClient.products[indexPath.row];
+        let product = DBC.products[indexPath.row];
         
         nextScreen.setSelectedProduct(product.name, PvoteUp: product.voteUp, PvoteDown: product.voteDown, Pdescription: product.description,Pimg: product.img!,id: product.id,Voted: product.voted);
        
@@ -152,6 +89,9 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
         showViewController(nextScreen, sender: self);
         
+    }
+    func updateData(timer:NSTimer){
+        print("reloaded")
     }
     
 }

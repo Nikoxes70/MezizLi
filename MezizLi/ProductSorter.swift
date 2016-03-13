@@ -13,4 +13,9 @@ class ProductSorter:NSObject{
         productsToSort.sortInPlace({ $0.voteUp > $1.voteUp })
         return productsToSort
     }
+    class func sortProductByDate(products:[Product])->[Product]{
+        var productsToSort = products
+        productsToSort.sortInPlace({ $0.date > $1.date })
+        return productsToSort
+    }
 }

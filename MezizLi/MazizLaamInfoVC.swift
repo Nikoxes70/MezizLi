@@ -9,7 +9,10 @@
 import UIKit
 
 class MazizLaamInfoVC: UIViewController {
-   var toReload = false
+    
+    let DBC = DBClient.getDBClient()
+    
+    var toReload = false
     let ud = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var loader: UIActivityIndicatorView!
@@ -145,77 +148,7 @@ class MazizLaamInfoVC: UIViewController {
             d.tableView.reloadData()
         }
     }
-    
-    
-    
-    
 
-    
-    //
-//    func getDataFromServer()
-//    {
-//        
-//        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://www.itzikne.5gbfree.com/DBProducts/getDataPhp.php")!, completionHandler: {d,r,e in
-//            
-//            self.readJSON(d!)
-//            
-//        }).resume();
-//        
-//    }
-    
-    
-//    //read from the server
-//    private func readJSON(d:NSData)
-//    {
-//        
-//        
-//        var json:[[String:AnyObject]];
-//        do{
-//            
-//            json = (try NSJSONSerialization.JSONObjectWithData(d, options: [])) as! Array
-//            
-//        }catch{
-//            
-//            json = [];
-//        }
-//        
-//
-//        for i in json
-//        {
-//            let Xid = (i["id"]! as! String);
-//            if(productId==Int(Xid))
-//            {
-//            AsyncTask(backgroundTask: {(i)in
-//                
-//                var image : UIImage?
-//                let category = (i["category"]! as! String);
-//                let name = (i["name"]! as! String);
-//                let description = (i["description"]! as! String);
-//                let voteUp = (i["voteUp"]! as! String);
-//                let voteDown = (i["voteDown"]! as! String);
-//                let img = (i["img"]! as! String);
-//                let date = 0.0
-//                let user = ""
-//                let UPC = ""
-//                let id = (i["id"]! as! String);
-//                let voted = (i["voted"]! as! String);
-//                print(name)
-//                if let url = NSURL(string: img){
-//                    if let data = NSData(contentsOfURL: url){
-//                        image = UIImage(data: data)!
-//                    }
-//                }
-//                
-//                DBClient.products.append(Product(itemName: name, itemDescription: description, itemCategory: category, itemVoteUp: Int(voteUp)!, itemVoteDown: Int(voteDown)!, currentDate: date, UPC: UPC, user: user, img: image,id: Int(id)!,Voted:voted))
-//                
-//                }, afterTask: {()in
-//                    
-//            }).execute(i)
-//            }
-//            
-//        }
-//
-//    }
     
     func Loader(){
         if(isOk=="ok"){
@@ -226,63 +159,38 @@ class MazizLaamInfoVC: UIViewController {
     
     //update the voteUP to UI
     func updatvoteUpToProduct(){
-        for(var i=0; i<DBClient.products.count; i++){
-            if DBClient.products[i].id == productId{
-                DBClient.products[i].voteUp++;
-                DBClient.products[i].voted.appendContentsOf(userId)
+        for(var i=0; i < DBC.products.count; i++){
+            if DBC.products[i].id == productId{
+                DBC.products[i].voteUp++;
+                DBC.products[i].voted.appendContentsOf(userId)
                 self.toReload = true
             }
         }
-        for(var i=0; i<DBClient.myProducts.count; i++){
-            if DBClient.myProducts[i].id == productId{
-                DBClient.myProducts[i].voteUp++;
-                DBClient.myProducts[i].voted.appendContentsOf(userId)
+        for(var i=0; i < DBC.myProducts.count; i++){
+            if DBC.myProducts[i].id == productId{
+                DBC.myProducts[i].voteUp++;
+                DBC.myProducts[i].voted.appendContentsOf(userId)
                 self.toReload = true
             }
         }
+        
     }
     
     //update the voteDown to UI
     func updatvoteDownToProduct(){
-        for(var i=0; i<DBClient.products.count; i++){
-            if DBClient.products[i].id == productId{
-                DBClient.products[i].voteDown++;
-                DBClient.products[i].voted.appendContentsOf(userId)
+        for(var i=0; i<DBC.products.count; i++){
+            if DBC.products[i].id == productId{
+                DBC.products[i].voteDown++;
+                DBC.products[i].voted.appendContentsOf(userId)
                 self.toReload = true
             }
         }
-        for(var i=0; i<DBClient.myProducts.count; i++){
-            if DBClient.myProducts[i].id == productId{
-                DBClient.myProducts[i].voteDown++;
-                DBClient.myProducts[i].voted.appendContentsOf(userId)
+        for(var i=0; i<DBC.myProducts.count; i++){
+            if DBC.myProducts[i].id == productId{
+                DBC.myProducts[i].voteDown++;
+                DBC.myProducts[i].voted.appendContentsOf(userId)
                 self.toReload = true
             }
         }
     }
-    
-    
-
-    
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

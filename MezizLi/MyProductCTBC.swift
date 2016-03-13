@@ -13,5 +13,4 @@ class MyProductCTBC : UITableViewCell {
     @IBOutlet weak var mvoteDownTTL: UILabel!
     @IBOutlet weak var mttlForCell: UILabel!
     @IBOutlet weak var mimgForCell: UIImageView!
-
 }
