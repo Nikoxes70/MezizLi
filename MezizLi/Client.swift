@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 class Client{
    let DBC = DBClient.getDBClient()
-    
+    var isEndedLoadUpData = true
     
     func addUser(firstName:String, lastName:String, email:String, phoneNumber:String)->String{
         var result:String = "none"
@@ -67,8 +67,9 @@ class Client{
         
         for i in json
         {
+            isEndedLoadUpData = false
             AsyncTask(backgroundTask: {(i)in
-
+                
                 var image : UIImage?
                 let category = (i["category"]! as! String);
                 let name = (i["name"]! as! String);
@@ -94,7 +95,7 @@ class Client{
                 
                 self.DBC.products.append(newProduct)
                
-                    if user == user{
+                    if user == userFromServer{
                         self.DBC.myProducts.append(newProduct)
                     }
                 
@@ -104,7 +105,39 @@ class Client{
                     
             }).execute(i)
         }
+        isEndedLoadUpData = true
     }
+    
+    func deleteProductInServer(id:Int){
+        let request = NSMutableURLRequest(URL: NSURL(string:"http://www.itzikne.5gbfree.com/DBProducts/deleteProduct.php")!);
+        
+        request.HTTPMethod = "POST";
+        
+        request.HTTPBody = "id=\(id)".dataUsingEncoding(NSUTF8StringEncoding);
+        print(id)
+        NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(d,r,e)in
+            if e == nil{
+            print(String(data: d!, encoding: NSUTF8StringEncoding)!);
+            print("deleted from server")
+            }
+        }).resume()
+    }
+    
+    func updateingProduct(id:Int,name:String,description:String,category:String){
+        
+        let request = NSMutableURLRequest(URL: NSURL(string:"http://www.itzikne.5gbfree.com/DBProducts/updateProduct.php")!);
+        
+        request.HTTPMethod = "POST";
+        
+        request.HTTPBody = "name=\(name)&id=\(id)&category=\(category)&description=\(description)".dataUsingEncoding(NSUTF8StringEncoding);
+        
+        NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(d,r,e)in
+            
+            print(String(data: d!, encoding: NSUTF8StringEncoding)!);
+            
+        }).resume()
+    }
+    
 //    func reloadDataFromServer(user:String,tv:UITableView? = nil){
 //        
 //        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://www.itzikne.5gbfree.com/DBProducts/getDataPhp.php")!, completionHandler: {d,r,e in

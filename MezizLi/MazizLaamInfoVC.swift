@@ -166,13 +166,7 @@ class MazizLaamInfoVC: UIViewController {
                 self.toReload = true
             }
         }
-        for(var i=0; i < DBC.myProducts.count; i++){
-            if DBC.myProducts[i].id == productId{
-                DBC.myProducts[i].voteUp++;
-                DBC.myProducts[i].voted.appendContentsOf(userId)
-                self.toReload = true
-            }
-        }
+    
         
     }
     
@@ -185,12 +179,6 @@ class MazizLaamInfoVC: UIViewController {
                 self.toReload = true
             }
         }
-        for(var i=0; i<DBC.myProducts.count; i++){
-            if DBC.myProducts[i].id == productId{
-                DBC.myProducts[i].voteDown++;
-                DBC.myProducts[i].voted.appendContentsOf(userId)
-                self.toReload = true
-            }
-        }
+       
     }
 }

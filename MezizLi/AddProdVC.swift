@@ -35,17 +35,18 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
         pickerView.delegate=self;
     }
     func viewDidAppear() {
-        
+       // print(pickerView.selectedRowInComponent(self))
     }
     
     
     var categories=["מזון","פארם","תינוקות","טיפוח","תקשורת","ביגוד","אחר"];
     
-    var myCategory:String="";
+    var myCategory:String="מזון";
     //how many components
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1;
     }
+    
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count;
