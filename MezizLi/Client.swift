@@ -101,6 +101,10 @@ class Client{
                 
                 }, afterTask: {()in
                     
+                    if  MazizLaamVC().isViewLoaded() && MazizLaamVC().view.window != nil{
+                        print("MZVC loaded")
+                    }
+                    
                     tv != nil ? tv!.reloadData() : ()
                     
             }).execute(i)
