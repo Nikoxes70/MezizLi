@@ -9,7 +9,7 @@
 import UIKit
 
 class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    
+    var user:String = ""
     @IBOutlet weak var mainTTL: UIImageView!
     var refreshControl: UIRefreshControl!
     var DBCLoadToken: dispatch_once_t = 0
@@ -21,24 +21,23 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var sideMEnuBtn: UIBarButtonItem!
     
     override func viewDidAppear(animated: Bool) {
-       // UDefaults.removeObjectForKey("LoggedUser")
-                    dispatch_once(&DBCLoadToken, {
-        if let _ = self.UDefaults.objectForKey("LoggedUser") as? String{
-            //Client().getDataFromServer(user, tv: self.tableView) //calls once on appStart
-            AsyncTask(backgroundTask: {()in
-                while !Client().isEndedLoadUpData{
-                    print("\(Client().isEndedLoadUpData)")
-                    self.tableView.reloadData()
-                }
-                }, afterTask: {()in
-                    print("ended roll up")
-                    self.tableView.reloadData()
-            }).execute()
+        
+        //UDefaults.removeObjectForKey("LoggedUser")
+        
+                    dispatch_once(&DBCLoadToken, {//calls once on appStart
+                        
+        if let u = self.UDefaults.objectForKey("LoggedUser") as? String{
+            
+        self.user = u
+            
+        //DBDocs().loadPublications(self.tableView)
+        //Client().getDataFromServer(u, tv: self.tableView)
+            Client().reloadDataFromServer(u, tv: self.tableView)
             }else{
             self.performSegueWithIdentifier("sign", sender: self)
         }
     })
-        tableView.reloadData()
+                tableView.reloadData()
     }
     override func viewWillAppear(animated: Bool) {
         mainTTL.layer.zPosition = 2
@@ -47,9 +46,9 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     override func viewDidLoad() {
         
         sideMEnuBtn.target = self.revealViewController()
-        sideMEnuBtn.action = Selector("revealToggle:")
+        sideMEnuBtn.action = Selector("rightRevealToggle:")
         
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -105,7 +104,7 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
         let product = DBC.products[indexPath.row];
         
-        nextScreen.setSelectedProduct(product.name, PvoteUp: product.voteUp, PvoteDown: product.voteDown, Pdescription: product.description,Pimg: product.img!,id: product.id,Voted: product.voted);
+        nextScreen.setSelectedProduct(product.name, PvoteUp: product.voteUp, PvoteDown: product.voteDown, Pdescription: product.pDescription,Pimg: product.img!,id: product.id,Voted: product.voted);
        
         
         
@@ -117,11 +116,13 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     }
     func refresh(sender:AnyObject)
     {
+        //Client().reloadDataFromServer(user, tv: self.tableView)
         self.tableView.reloadData()
+        //print(DBC.products[0].user)
+       // DBDocs().savePublications()
         // Code to refresh table view
         //print("table refreshed!!")
-        
+       // Client().getDataFromServer(user, tv: self.tableView)
         self.refreshControl.endRefreshing()
     }
-    
 }

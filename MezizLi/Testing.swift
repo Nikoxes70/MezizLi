@@ -47,5 +47,61 @@ class Testing{
 //            return nil
 //        })
 //      }
+    func documentsDirectory() -> String {
+        
+        var doucuments = ""
+        let dirs : [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
+        if  dirs != nil {
+            doucuments = dirs![0]
+        }
+        return doucuments
+    }
+    ////
+    ////
     
+
+    /////????//////
+//    let publicationsFilePath =
+    func savePublications() {
+        let db = DBClient.getDBClient()
+        
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            let publicationsFilePath = self.documentsDirectory().stringByAppendingString("/publications")
+            NSKeyedArchiver.archiveRootObject(db.products, toFile: publicationsFilePath)
+        }
+    }
+    
+    func loadPublications() {
+        let db = DBClient.getDBClient()
+        let publicationsFilePath = self.documentsDirectory().stringByAppendingString("/publications")
+ 
+        print("load publications from path: \(publicationsFilePath)")
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            
+            if NSFileManager.defaultManager().fileExistsAtPath(publicationsFilePath){
+                let array = NSKeyedUnarchiver.unarchiveObjectWithFile(publicationsFilePath) as! [Product]
+                db.products = array
+            }
+        }
+    }
+    func preparePhotosDirectory() -> NSURL {
+        
+        let fm = NSFileManager.defaultManager()
+        let appSupportDirs = fm.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        let photosDirectoryUrl = appSupportDirs[0].URLByAppendingPathComponent("Images")
+        
+        
+        if !photosDirectoryUrl.checkResourceIsReachableAndReturnError(nil) {
+            do {
+                try fm.createDirectoryAtURL(photosDirectoryUrl, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print(error)
+            }
+        }
+        
+        print(photosDirectoryUrl.path)
+        return photosDirectoryUrl
+    }
 }

@@ -15,8 +15,8 @@ let UDef = NSUserDefaults.standardUserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let user = UDef.objectForKey("LoggedUser") as? String{
-            Client().getDataFromServer(user)
+        if let _ = UDef.objectForKey("LoggedUser") as? String{
+           // Client().getDataFromServer(user)
         }
         
         

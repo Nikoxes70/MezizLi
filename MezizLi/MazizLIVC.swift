@@ -11,6 +11,7 @@ import UIKit
     class MazizLIVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         let DBC = DBClient.getDBClient()
         
+        @IBOutlet weak var mainTTL: UIImageView!
         @IBOutlet weak var sideMenuBTN: UIBarButtonItem!
         
         let UDefaults = NSUserDefaults.standardUserDefaults();
@@ -21,12 +22,16 @@ import UIKit
         override func viewDidAppear(animated: Bool) {
             tableView.reloadData();
         }
+        override func viewWillAppear(animated: Bool) {
+            mainTTL.layer.zPosition = 2
+          
+        }
         override func viewDidLoad() {
             
             tableView.reloadData();
             
             sideMenuBTN.target = self.revealViewController()
-            sideMenuBTN.action = Selector("revealToggle:")
+            sideMenuBTN.action = Selector("rightRevealToggle:")
             
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             
@@ -53,7 +58,6 @@ import UIKit
             cell.mimgForCell?.image = DBC.myProducts[indexPath.row].img;
             //
             cell.mimgForCell.clipsToBounds=true;
-            cell.mimgForCell?.layer.cornerRadius = CGFloat(55);
             //
             cell.mvoteUpTTL.text = "\(DBC.myProducts[indexPath.row].voteUp)";
             cell.mvoteDownTTL.text = "\(DBC.myProducts[indexPath.row].voteDown)";
@@ -109,7 +113,4 @@ import UIKit
             edit.backgroundColor = UIColor.blueColor();
             return [delete,edit]
         }
- 
-        
-        
 }

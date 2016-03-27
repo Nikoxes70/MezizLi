@@ -13,10 +13,11 @@ import AssetsLibrary;
 import Photos;
 
 class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    
     let DBC = DBClient.getDBClient()
     
     let UDefaults = NSUserDefaults.standardUserDefaults();
-
+    
     var imgPicker = UIImagePickerController();
     
     @IBOutlet weak var prodName: UITextField!
@@ -24,18 +25,18 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var imgView: UIImageView!
     var imgPath:String="";
-    @IBOutlet weak var labelUPC: UILabel!
+   // @IBOutlet weak var labelUPC: UILabel!
     var getUPC:String?;
     var webimage:String?
     @IBOutlet weak var ERROR: UILabel!
-
+    
     
     override func viewDidLoad() {
         imgPicker.delegate=self;
         pickerView.delegate=self;
     }
     func viewDidAppear() {
-       // print(pickerView.selectedRowInComponent(self))
+        // print(pickerView.selectedRowInComponent(self))
     }
     
     
@@ -61,7 +62,7 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
     }
     
     private func UPCsetter(upc:String){
-        labelUPC.text="ברקוד:  \(upc)";
+        //labelUPC.text="ברקוד:  \(upc)";
         getUPC=upc;
         let url = NSURL(string: "http://m.pricez.co.il/ProductPictures/200x/\(upc).jpg")
         if let data = NSData(contentsOfURL: url!){
@@ -112,7 +113,7 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
     }
     
     func alertERROR(txt:String){
-       ERROR.text = txt//setting the error.txt lbl
+        ERROR.text = txt//setting the error.txt lbl
         
         //creating first animation "FadeIn"
         UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
@@ -126,7 +127,7 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
                     }, completion: nil)
         })
     }
-
+    
     
     @IBAction func createAndSendProd(sender: AnyObject) {
         //let myUPC=getUPC;
@@ -147,14 +148,14 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
         let timeStemp=NSDate().timeIntervalSince1970;
         //let img = "http://m.pricez.co.il/ProductPictures/200x/\(myProduct.UPC).jpg"
         myProduct = Product(itemName: self.prodName.text!, itemDescription: self.desricption.text!, itemCategory: self.myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: userPhone!, img: self.imgView.image,id: 0,Voted: "");
-        UploadProduct2DB().addProduct(myProduct);
-       // self.performSegueWithIdentifier("MazizLi", sender: self);
-
-//        AsyncTask(backgroundTask: {(p:Product)->Void in
-//           UploadProduct2DB().addProduct(p);
-//        }, afterTask: {
-//            self.performSegueWithIdentifier("MazizLi", sender: self);
-//        }).execute(myProduct);
+        Upload2DB().myImageUploadRequest(myProduct);
+        // self.performSegueWithIdentifier("MazizLi", sender: self);
+        
+        //        AsyncTask(backgroundTask: {(p:Product)->Void in
+        //           UploadProduct2DB().addProduct(p);
+        //        }, afterTask: {
+        //            self.performSegueWithIdentifier("MazizLi", sender: self);
+        //        }).execute(myProduct);
         //myProduct.img = UIImage(
         
         if let url = NSURL(string: "http://m.pricez.co.il/ProductPictures/200x/\(self.getUPC).jpg"){
@@ -163,7 +164,7 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
             }
         }
         
-
+        
         DBC.products.append(myProduct)
         DBC.myProducts.append(myProduct)
         
@@ -172,8 +173,6 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "backToML"{
             return verifyField(desricption.text!, l:prodName.text!)
-            
-
         }
         return true
     }
@@ -181,6 +180,6 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
         if segue.identifier == "backToML"{
             let d = segue.destinationViewController as! MazizLIVC
             d.tableView.reloadData()
-            }
+        }
     }
 }

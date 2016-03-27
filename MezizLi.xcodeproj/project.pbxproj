@@ -13,6 +13,11 @@
 		750414001C90673D00303778 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750413FD1C90673D00303778 /* LoginVC.swift */; };
 		750414011C90673D00303778 /* ProductSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750413FE1C90673D00303778 /* ProductSorter.swift */; };
 		750414021C90673D00303778 /* SignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750413FF1C90673D00303778 /* SignVC.swift */; };
+		751583C41CA75A9100D45147 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751583C31CA75A9100D45147 /* Validator.swift */; };
+		753767941C9947AC0088E464 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753767911C9947AC0088E464 /* FBSDKCoreKit.framework */; };
+		753767951C9947AC0088E464 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753767921C9947AC0088E464 /* FBSDKLoginKit.framework */; };
+		753767961C9947AC0088E464 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753767931C9947AC0088E464 /* FBSDKShareKit.framework */; };
+		7580D69E1C9705AF00FCD990 /* DBDocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7580D69D1C9705AF00FCD990 /* DBDocs.swift */; };
 		758D5A671C953990000619F7 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D5A661C953990000619F7 /* Testing.swift */; };
 		758D5A691C95456D000619F7 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 758D5A681C95456D000619F7 /* AWSS3.framework */; };
 		758D5A6B1C9545A6000619F7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 758D5A6A1C9545A6000619F7 /* libsqlite3.tbd */; };
@@ -33,21 +38,24 @@
 		758F3B4C1C8C34F4005D1EF5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B4B1C8C34F4005D1EF5 /* Product.swift */; };
 		758F3B4E1C8C360E005D1EF5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 758F3B4D1C8C360E005D1EF5 /* Info.plist */; };
 		758F3B701C8C3C99005D1EF5 /* MazizLaamInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B6F1C8C3C99005D1EF5 /* MazizLaamInfoVC.swift */; };
-		758F3B721C8C3EB2005D1EF5 /* UploadProduct2DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B711C8C3EB2005D1EF5 /* UploadProduct2DB.swift */; };
 		758F3B741C8C55D2005D1EF5 /* asynctask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B731C8C55D2005D1EF5 /* asynctask.swift */; };
-		758F3B761C8D7199005D1EF5 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B751C8D7199005D1EF5 /* Validator.swift */; };
 		758F3B781C8D71A3005D1EF5 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F3B771C8D71A3005D1EF5 /* RegisterVC.swift */; };
+		75E1308E1CA40A0B00EEB077 /* Upload2DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E1308D1CA40A0B00EEB077 /* Upload2DB.swift */; };
 		8EFF8E111C9028F40091D878 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFF8E101C9028F40091D878 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6C11A06E1C8DCFAE008FDF0B /* ProductCTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCTBC.swift; sourceTree = "<group>"; };
-		6C11A0701C8DD1BC008FDF0B /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		6CA3A8B11C8F579100C2A1BB /* LaunchScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		750413FB1C9065A100303778 /* MyProductCTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProductCTBC.swift; sourceTree = "<group>"; };
 		750413FD1C90673D00303778 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		750413FE1C90673D00303778 /* ProductSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSorter.swift; sourceTree = "<group>"; };
 		750413FF1C90673D00303778 /* SignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVC.swift; sourceTree = "<group>"; };
+		751583C31CA75A9100D45147 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		753767911C9947AC0088E464 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		753767921C9947AC0088E464 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		753767931C9947AC0088E464 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		7580D69D1C9705AF00FCD990 /* DBDocs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBDocs.swift; sourceTree = "<group>"; };
 		758D5A661C953990000619F7 /* Testing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		758D5A681C95456D000619F7 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		758D5A6A1C9545A6000619F7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -71,10 +79,9 @@
 		758F3B4B1C8C34F4005D1EF5 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		758F3B4D1C8C360E005D1EF5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		758F3B6F1C8C3C99005D1EF5 /* MazizLaamInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazizLaamInfoVC.swift; sourceTree = "<group>"; };
-		758F3B711C8C3EB2005D1EF5 /* UploadProduct2DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadProduct2DB.swift; sourceTree = "<group>"; };
 		758F3B731C8C55D2005D1EF5 /* asynctask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = asynctask.swift; sourceTree = "<group>"; };
-		758F3B751C8D7199005D1EF5 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		758F3B771C8D71A3005D1EF5 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		75E1308D1CA40A0B00EEB077 /* Upload2DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload2DB.swift; sourceTree = "<group>"; };
 		8EFF8E101C9028F40091D878 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -83,9 +90,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				753767961C9947AC0088E464 /* FBSDKShareKit.framework in Frameworks */,
 				758D5A6F1C9545C6000619F7 /* SystemConfiguration.framework in Frameworks */,
+				753767941C9947AC0088E464 /* FBSDKCoreKit.framework in Frameworks */,
 				758D5A6D1C9545B5000619F7 /* libz.tbd in Frameworks */,
 				758D5A6B1C9545A6000619F7 /* libsqlite3.tbd in Frameworks */,
+				753767951C9947AC0088E464 /* FBSDKLoginKit.framework in Frameworks */,
 				758D5A691C95456D000619F7 /* AWSS3.framework in Frameworks */,
 				8EFF8E111C9028F40091D878 /* MobileCoreServices.framework in Frameworks */,
 			);
@@ -94,6 +104,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		753767901C9947A00088E464 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				753767911C9947AC0088E464 /* FBSDKCoreKit.framework */,
+				753767921C9947AC0088E464 /* FBSDKLoginKit.framework */,
+				753767931C9947AC0088E464 /* FBSDKShareKit.framework */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
 		758D5A741C9546B0000619F7 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,10 +127,10 @@
 		758F3B111C8C2F0E005D1EF5 = {
 			isa = PBXGroup;
 			children = (
+				758D5A681C95456D000619F7 /* AWSS3.framework */,
 				758D5A6E1C9545C6000619F7 /* SystemConfiguration.framework */,
 				758D5A6C1C9545B5000619F7 /* libz.tbd */,
 				758D5A6A1C9545A6000619F7 /* libsqlite3.tbd */,
-				758D5A681C95456D000619F7 /* AWSS3.framework */,
 				758F3B1C1C8C2F0E005D1EF5 /* MezizLi */,
 				758F3B1B1C8C2F0E005D1EF5 /* Products */,
 			);
@@ -127,6 +147,7 @@
 		758F3B1C1C8C2F0E005D1EF5 /* MezizLi */ = {
 			isa = PBXGroup;
 			children = (
+				753767901C9947A00088E464 /* Facebook */,
 				758F3B1D1C8C2F0E005D1EF5 /* AppDelegate.swift */,
 				758F3B401C8C3114005D1EF5 /* CommonUtils */,
 				758F3B3F1C8C3108005D1EF5 /* VC */,
@@ -162,14 +183,14 @@
 		758F3B401C8C3114005D1EF5 /* CommonUtils */ = {
 			isa = PBXGroup;
 			children = (
+				75E1308D1CA40A0B00EEB077 /* Upload2DB.swift */,
 				750413FE1C90673D00303778 /* ProductSorter.swift */,
-				6C11A0701C8DD1BC008FDF0B /* Validator.swift */,
 				758F3B731C8C55D2005D1EF5 /* asynctask.swift */,
-				758F3B711C8C3EB2005D1EF5 /* UploadProduct2DB.swift */,
 				758F3B411C8C3199005D1EF5 /* DBClient.swift */,
+				7580D69D1C9705AF00FCD990 /* DBDocs.swift */,
 				758F3B3D1C8C3100005D1EF5 /* Client.swift */,
 				758F3B4B1C8C34F4005D1EF5 /* Product.swift */,
-				758F3B751C8D7199005D1EF5 /* Validator.swift */,
+				751583C31CA75A9100D45147 /* Validator.swift */,
 			);
 			name = CommonUtils;
 			sourceTree = "<group>";
@@ -207,6 +228,11 @@
 					758F3B191C8C2F0E005D1EF5 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = L29R73X57A;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -252,6 +278,7 @@
 				758D5A671C953990000619F7 /* Testing.swift in Sources */,
 				758D5A761C956E7B000619F7 /* UpDateProductVC.swift in Sources */,
 				750414021C90673D00303778 /* SignVC.swift in Sources */,
+				7580D69E1C9705AF00FCD990 /* DBDocs.swift in Sources */,
 				750413FC1C9065A100303778 /* MyProductCTBC.swift in Sources */,
 				6C11A06F1C8DCFAE008FDF0B /* ProductCTBC.swift in Sources */,
 				758F3B701C8C3C99005D1EF5 /* MazizLaamInfoVC.swift in Sources */,
@@ -259,11 +286,11 @@
 				758F3B3E1C8C3100005D1EF5 /* Client.swift in Sources */,
 				758F3B4C1C8C34F4005D1EF5 /* Product.swift in Sources */,
 				758F3B741C8C55D2005D1EF5 /* asynctask.swift in Sources */,
-				758F3B761C8D7199005D1EF5 /* Validator.swift in Sources */,
 				758F3B461C8C3241005D1EF5 /* MazizLaamVC.swift in Sources */,
 				758F3B441C8C3216005D1EF5 /* MazizLIVC.swift in Sources */,
+				751583C41CA75A9100D45147 /* Validator.swift in Sources */,
+				75E1308E1CA40A0B00EEB077 /* Upload2DB.swift in Sources */,
 				758D5A731C9546A4000619F7 /* SWRevealViewController.m in Sources */,
-				758F3B721C8C3EB2005D1EF5 /* UploadProduct2DB.swift in Sources */,
 				758F3B481C8C327C005D1EF5 /* AddProdVC.swift in Sources */,
 				758F3B421C8C3199005D1EF5 /* DBClient.swift in Sources */,
 				758F3B4A1C8C3366005D1EF5 /* UPCImageVC.swift in Sources */,
@@ -385,6 +412,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MezizLi",
 				);
 				INFOPLIST_FILE = MezizLi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -406,6 +434,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MezizLi",
 				);
 				INFOPLIST_FILE = MezizLi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

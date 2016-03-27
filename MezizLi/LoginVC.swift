@@ -28,9 +28,7 @@ var isOk = false
                     let result = String(data: d!, encoding: NSUTF8StringEncoding)!;
                     if result.rangeOfString("success") != nil{
                         self.isOk = true
-                        let UDefaluts = NSUserDefaults.standardUserDefaults();
-                        UDefaluts.setValue(self.phone.text!, forKey: "LoggedUser");
-                        self.performSegueWithIdentifier("login", sender: self)
+                        self.moveNext()
                     }else{
                         self.dialog("User doesnt exist")
                     }
@@ -84,5 +82,10 @@ var isOk = false
         border.borderWidth = width
         txt.layer.addSublayer(border)
         txt.layer.masksToBounds = true
+    }
+    func moveNext(){
+        let UDefaluts = NSUserDefaults.standardUserDefaults();
+        UDefaluts.setValue(self.phone.text!, forKey: "LoggedUser");
+        self.performSegueWithIdentifier("login", sender: self)
     }
 }

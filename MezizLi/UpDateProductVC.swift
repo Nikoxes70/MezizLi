@@ -87,7 +87,7 @@ class UpDateProductVC: UIViewController,UIPickerViewDataSource, UIPickerViewDele
             if DBC.products[i].id == id{
                 DBC.products[i].category=UCategory;
                 DBC.products[i].name=prodName.text!;
-                DBC.products[i].description=productDescriptionText.text!;
+                //DBC.products[i].description=productDescriptionText.text!;
                 
             }
         }
@@ -95,7 +95,7 @@ class UpDateProductVC: UIViewController,UIPickerViewDataSource, UIPickerViewDele
             if DBC.myProducts[i].id == id{
                 DBC.products[i].category=UCategory;
                 DBC.products[i].name=prodName.text!;
-                DBC.products[i].description=productDescriptionText.text!;
+               // DBC.products[i].description=productDescriptionText.text!;
                 
             }
         }
