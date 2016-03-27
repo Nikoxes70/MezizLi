@@ -47,7 +47,6 @@ class Upload2DB {
     let boundary = generateBoundaryString()
     
     request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-    
     let smallImg=resizeimage(product.img!);
    // smallImg = UIImage(named: filename)
     let imageData = UIImageJPEGRepresentation(smallImg,1)

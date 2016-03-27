@@ -29,11 +29,13 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
     var getUPC:String?;
     var webimage:String?
     @IBOutlet weak var ERROR: UILabel!
-    
+    var defaultImg:UIImage?;
     
     override func viewDidLoad() {
         imgPicker.delegate=self;
         pickerView.delegate=self;
+        defaultImg = imgView.image!;
+
     }
     func viewDidAppear() {
         // print(pickerView.selectedRowInComponent(self))
@@ -147,8 +149,15 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
         let userPhone = UDefaults.objectForKey("LoggedUser") as? String;
         let timeStemp=NSDate().timeIntervalSince1970;
         //let img = "http://m.pricez.co.il/ProductPictures/200x/\(myProduct.UPC).jpg"
+        if (self.imgView.image == defaultImg ) {
+            
+            myProduct = Product(itemName: self.prodName.text!, itemDescription: self.desricption.text!, itemCategory: self.myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: "", user: userPhone!, img: self.imgView.image,id: 0,Voted: "");
+            Upload2DB().myImageUploadRequest(myProduct);
+
+        }
+        else{
         myProduct = Product(itemName: self.prodName.text!, itemDescription: self.desricption.text!, itemCategory: self.myCategory, itemVoteUp: 0, itemVoteDown: 0, currentDate:timeStemp , UPC: myUPC, user: userPhone!, img: self.imgView.image,id: 0,Voted: "");
-        Upload2DB().myImageUploadRequest(myProduct);
+        }
         // self.performSegueWithIdentifier("MazizLi", sender: self);
         
         //        AsyncTask(backgroundTask: {(p:Product)->Void in
@@ -157,11 +166,15 @@ class AddProdVC : UIViewController, UINavigationControllerDelegate, UIImagePicke
         //            self.performSegueWithIdentifier("MazizLi", sender: self);
         //        }).execute(myProduct);
         //myProduct.img = UIImage(
-        
+        if (myUPC != "" && self.imgView.image != defaultImg){
         if let url = NSURL(string: "http://m.pricez.co.il/ProductPictures/200x/\(self.getUPC).jpg"){
             if let data = NSData(contentsOfURL: url){
                 myProduct.img = UIImage(data: data)!
             }
+            }
+            
+            Upload2DB().myImageUploadRequest(myProduct);
+
         }
         
         

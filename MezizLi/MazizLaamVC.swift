@@ -8,21 +8,21 @@
 
 import UIKit
 
-class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate,SWRevealViewControllerDelegate{
     var user:String = ""
     @IBOutlet weak var mainTTL: UIImageView!
     var refreshControl: UIRefreshControl!
     var DBCLoadToken: dispatch_once_t = 0
     let UDefaults = NSUserDefaults.standardUserDefaults();
     let DBC = DBClient.getDBClient()
-    
+//    self.revealViewController.delegate = self;
     @IBOutlet weak var tableView: UITableView!
     //@IBOutlet weak var sideMenuBtn: UIButton!
     @IBOutlet weak var sideMEnuBtn: UIBarButtonItem!
     
     override func viewDidAppear(animated: Bool) {
         
-        //UDefaults.removeObjectForKey("LoggedUser")
+       // UDefaults.removeObjectForKey("LoggedUser")
         
                     dispatch_once(&DBCLoadToken, {//calls once on appStart
                         
@@ -54,6 +54,12 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl) // not required when us
+        
+        if self.revealViewController() != nil {
+            
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        }
     }
     @IBAction func backToMaziz(sender:UIStoryboardSegue){
         
@@ -125,4 +131,5 @@ class MazizLaamVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
        // Client().getDataFromServer(user, tv: self.tableView)
         self.refreshControl.endRefreshing()
     }
+
 }

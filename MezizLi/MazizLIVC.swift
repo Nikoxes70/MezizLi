@@ -8,14 +8,16 @@
 
 import UIKit
 
-    class MazizLIVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    class MazizLIVC: UIViewController,UITableViewDataSource,UITableViewDelegate,SWRevealViewControllerDelegate {
         let DBC = DBClient.getDBClient()
         
         @IBOutlet weak var mainTTL: UIImageView!
         @IBOutlet weak var sideMenuBTN: UIBarButtonItem!
         
         let UDefaults = NSUserDefaults.standardUserDefaults();
-       
+
+//        revealViewController().delegate = self
+
         
         @IBOutlet weak var tableView: UITableView!
         var name:String = "";
@@ -33,7 +35,17 @@ import UIKit
             sideMenuBTN.target = self.revealViewController()
             sideMenuBTN.action = Selector("rightRevealToggle:")
             
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//            self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//            
+//            if self.revealViewController() != nil {
+//                
+//                self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//                self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+//            }else{
+//               
+//                self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//            }
+           // self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             
         }
         @IBAction func backToMazizLi(sender:UIStoryboardSegue){
@@ -106,11 +118,27 @@ import UIKit
                 let product=self.DBC.myProducts[indexPath.row];
                 let bar=self.DBC.products[indexPath.row];
                 
-                nextScreen.setUpDateProduct(product.name, Pdescription: product.description, Pimg: product.img!, id: product.id, Pbarcode: bar.UPC)
+                nextScreen.setUpDateProduct(product.name, Pdescription: product.pDescription, Pimg: product.img!, id: product.id, Pbarcode: bar.UPC)
                 
                 self.showViewController(nextScreen, sender: self);
             });
             edit.backgroundColor = UIColor.blueColor();
             return [delete,edit]
         }
+        func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition)
+        {
+            if revealController.frontViewPosition == FrontViewPosition.Right
+            {
+                self.view.userInteractionEnabled = false
+                print("opened")
+            }
+            else
+            {
+                self.view.userInteractionEnabled = true
+                print("closed")
+            }
+            
+        }
+        
+        
 }

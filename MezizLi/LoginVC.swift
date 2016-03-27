@@ -30,7 +30,7 @@ var isOk = false
                         self.isOk = true
                         self.moveNext()
                     }else{
-                        self.dialog("User doesnt exist")
+                        self.dialog("משתמש לא קיים במערכת")
                     }
                     
                 }else{
@@ -53,12 +53,12 @@ var isOk = false
         loginUser(phone.text!)
         }else{
             loader.hidden = true
-            dialog("Invalid phone number")
+            dialog("מספר טלפון לא תקין")
         }
     }
     func dialog(txt:String){
-        let dialog = UIAlertController(title: "Error", message: txt, preferredStyle: .Alert)
-        dialog.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        let dialog = UIAlertController(title: "שגיעה", message: txt, preferredStyle: .Alert)
+        dialog.addAction(UIAlertAction(title: "אשר", style: .Cancel, handler: nil))
         self.presentViewController(dialog, animated: true, completion: nil)
     }
     func logged(){
